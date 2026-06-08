@@ -3,10 +3,5 @@
 	padding: 0;
 	background-image: url("/assets/achtergrond.png");
 	background-repeat: no-repeat;
-
-	background-size: cover;
-}
-body {
-	background-color: rgb(rgba(255, 255, 255, 0.8));
 	background-size: cover;
 }
