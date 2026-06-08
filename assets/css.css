@@ -48,21 +48,7 @@ body {
 	text-decoration: underline;
 	font-weight: normal;
 }
-h1 {
-	font-size: 48px;
 
-	font-family: "Inter", serif;
-	font-weight: bold;
-}
-h2 {
-	font-size: 27px;
-	font-family: "Arial", serif;
-	font-weight: bold;
-}
-p {
-	font-size: 1rem;
-	line-height: 1.5;
-}
 .gray-text {
 	color: gray;
 }
