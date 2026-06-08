@@ -1,10 +1,17 @@
-# fullprojects2-bruksel-bruksel3
+## fullprojects2-bruksel-bruksel3
 
 fullprojects2-bruksel-bruksel3 created by GitHub Classroom
 
+## ------PROJECT DESCRIPTION------
+
+A Responsive and user-centered website made for Brukselbinnenstebuiten,
+You can search through a large numbers of images and this way explore
+the rich history of 3 area sections of Brussels.
+
 ## HTML:
 
---index:
+------------index------------
+
 Headers:
 Navigation:
 Carousel:
@@ -13,35 +20,46 @@ Footer:
 
 ## CSS:
 
---Color:
+------------Color------------
+
 Classes:
 Id's:
 
---flex:
+------------flex------------
+
 Classes:
 Id's:
 
---font:
+------------font------------
+
 Classes:
 Id's:
 
---footer:
+------------footer------------
+
 Classes:
 Id's:
 
---global:
+------------global------------
+
 Classes:
 Id's:
 
---header:
+------------header------------
+
 Classes:
 Id's:
 
---sidebar:
+------------sidebar------------
+
 Classes:
 Id's:
 
 ## JAVASCRIPT:
 
---index:
+------------index------------
 Functions:
+Constants:
+Variables:
+
+## ------BRONVERMELDING------
