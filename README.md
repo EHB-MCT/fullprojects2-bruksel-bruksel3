@@ -14,8 +14,15 @@ Navigation:
 Carousel:
 sidebar:
 Footer:
+Classes: .wrapper
 
 ## CSS:
+
+------------css------------
+Classes: .color-box, .primary, .secondary, .background, .style-guide, .section-header,
+.gray-text, .btn, .paragraphs, .paragraph-itself
+Id's:
+Root:
 
 ------------Color------------
 Classes:
