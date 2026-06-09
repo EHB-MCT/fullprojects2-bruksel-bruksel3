@@ -1,8 +1,18 @@
 * {
 	background-image: url("/assets/achtergrond.png");
 	background-repeat: no-repeat;
-	background-size: 100% 100%;
+	background-size: auto 150%;
 	background-attachment: fixed;
 	margin: 0;
 	padding: 0;
+}
+@media (min-width: 768px) {
+	* {
+		background-image: url("/assets/achtergrond.png");
+		background-repeat: no-repeat;
+		background-size: auto 150%;
+		background-attachment: fixed;
+		margin: 0;
+		padding: 0;
+	}
 }
