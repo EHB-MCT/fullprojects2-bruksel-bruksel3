@@ -8,7 +8,7 @@
 }
 .sidebar {
   width: 320px;
-  background: rgba(255, 255, 255, 0.92);
+  background: rgba(255, 255, 255, 0.4);
   border-radius: 32px;
   padding: 32px;
   box-shadow: 0 30px 60px rgba(0, 0, 0, 0.18);
@@ -95,7 +95,7 @@
 }
 .gallery {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 24px;
 }
 .card {
