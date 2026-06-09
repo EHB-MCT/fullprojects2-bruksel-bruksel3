@@ -9,12 +9,7 @@ The website aims to present Bruksel's mission, activities, and visual content in
 ## HTML:
 
 ------------index------------
-Headers:
-Navigation:
-Carousel:
-sidebar:
-Footer:
-Classes: .wrapper
+Classes aangesproken: .wrapper
 
 ## CSS:
 
@@ -23,6 +18,12 @@ Classes: .color-box, .primary, .secondary, .background, .style-guide, .section-h
 .gray-text, .btn, .paragraphs, .paragraph-itself
 Id's:
 Root:
+
+--primary-color: #ffffff;
+--secondary-color: #4ec02a;
+--background: #f5f1e7;
+--text: #000000;
+--background-color: #ffffff;
 
 ------------Color------------
 Classes:
@@ -65,5 +66,6 @@ Id's:
 Functions:
 Constants:
 Variables:
+Classes/Id's aangesproken:
 
 ## ------BRONVERMELDING------
