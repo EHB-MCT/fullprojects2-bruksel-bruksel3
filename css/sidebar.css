@@ -28,7 +28,7 @@
   font-size: 1rem;
 }
 .search-box::before {
-  content: "🔍";
+  content: "";
   position: absolute;
   left: 18px;
   top: 50%;
@@ -100,9 +100,18 @@
 }
 .card {
   min-height: 220px;
+  max-height: 250px;
   border-radius: 32px;
   overflow: hidden;
   background: rgba(255, 255, 255, 0.92);
-  border: 1px solid rgba(255, 255, 255, 0.9);
   box-shadow: 0 25px 45px rgba(0, 0, 0, 0.16);
+}
+.fa-xmark {
+  margin-left: 12px;
+}
+.fa-xmark:hover {
+  color: #3fc02b96;
+}
+#Noordwijk {
+  border-radius: 50%;
 }
