@@ -9,7 +9,9 @@ The website aims to present Bruksel's mission, activities, and visual content in
 ## HTML:
 
 ------------index------------
-Classes aangesproken: .wrapper
+Classes aangesproken: .color-box, .primary, .secondary, .background, .style-guide, .section-header,
+.gray-text, .btn, .paragraphs, .paragraph-itself, .container, .sidebar, .search-box, .panel,
+.date-inputs, .slider, .content, .top-filters, .filter-pill, .gallery, .card, .fa-xmark
 
 ## CSS:
 
