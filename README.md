@@ -44,10 +44,6 @@ Id's:
 Classes:
 Id's:
 
-------------footer------------
-Classes:
-Id's:
-
 ------------global------------
 Classes:
 Id's:

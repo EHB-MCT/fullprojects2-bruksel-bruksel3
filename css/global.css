@@ -1,18 +1,18 @@
 * {
-	background-image: url("/assets/achtergrond.png");
-	background-repeat: no-repeat;
-	background-size: auto 150%;
-	background-attachment: fixed;
-	margin: 0;
-	padding: 0;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
-@media (min-width: 768px) {
-	* {
-		background-image: url("/assets/achtergrond.png");
-		background-repeat: no-repeat;
-		background-size: auto 150%;
-		background-attachment: fixed;
-		margin: 0;
-		padding: 0;
-	}
+html,
+body {
+  min-height: 100%;
+}
+body {
+  font-family: "Roboto", sans-serif;
+  color: #111;
+  background-image: url("../assets/achtergrond.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
 }

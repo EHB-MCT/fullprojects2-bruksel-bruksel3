@@ -13,16 +13,86 @@
     <title>Beeldenbank</title>
   </head>
   <body>
-    <div class="wrapper">
-      <header>
-        <nav>
-          <img src="/assets/logo_high res.png" alt="logo" class="logo" />
-          <div class="buttons">
-            <a href="index.html">info</a>
-            <a href="index.html">links</a>
+    <header>
+      <div class="header-inner">
+        <img src="assets/logo_high res.png" alt="logo" class="logo" />
+        <div class="header-actions">
+          <a href="#" class="icon-button" aria-label="info">ℹ</a>
+          <a href="#" class="icon-button" aria-label="links">↗</a>
+        </div>
+      </div>
+    </header>
+    <div class="container">
+      <aside class="sidebar">
+        <div class="search-box">
+          <input type="search" placeholder="search" />
+        </div>
+        <div class="panel">
+          <h1>Wijk</h1>
+          <label
+            ><input
+              type="checkbox"
+              id="Noordwijk"
+              name="Noordwijk"
+              value="Noordwijk"
+            />
+            Noordwijk</label
+          >
+          <label
+            ><input
+              type="checkbox"
+              id="Kuregem"
+              name="Kuregem"
+              value="Kuregem"
+            />
+            Kuregem</label
+          >
+          <label
+            ><input
+              type="checkbox"
+              id="Leopoldwijk"
+              name="Leopoldwijk"
+              value="Leopoldwijk"
+            />
+            Leopoldwijk</label
+          >
+        </div>
+        <div class="panel">
+          <h1>Datum</h1>
+          <div class="date-inputs">
+            <input type="text" placeholder="1920" />
+            <input type="text" placeholder="2019" />
           </div>
-        </nav>
-      </header>
+          <input
+            type="range"
+            min="1970"
+            max="2026"
+            value="2010"
+            class="slider"
+            id="myRange"
+          />
+        </div>
+      </aside>
+      <main class="content">
+        <div class="top-filters">
+          <span class="filter-pill">1920 - 2019</span>
+          <span class="filter-pill">Noordwijk</span>
+        </div>
+        <div class="gallery">
+          <div class="card"></div>
+          <div class="card"></div>
+          <div class="card"></div>
+          <div class="card"></div>
+          <div class="card"></div>
+          <div class="card"></div>
+          <div class="card"></div>
+          <div class="card"></div>
+          <div class="card"></div>
+          <div class="card"></div>
+          <div class="card"></div>
+          <div class="card"></div>
+        </div>
+      </main>
     </div>
   </body>
 </html>
