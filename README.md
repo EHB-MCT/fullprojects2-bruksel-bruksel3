@@ -49,11 +49,12 @@ Classes:
 Id's:
 
 ------------header------------
-Classes:
+Classes: .header-inner, .header-actions, .icon-button, .logo, .buttons
 Id's:
 
 ------------sidebar------------
-Classes:
+Classes: .container, .sidebar, .search-box, .panel, .date-inputs, .slider, .content,
+.top-filters, .filter-pill, .gallery, .card, .fa-xmark
 Id's:
 
 ## JAVASCRIPT:
