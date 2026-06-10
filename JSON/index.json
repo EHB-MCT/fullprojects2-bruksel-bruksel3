@@ -1,0 +1,83 @@
+[
+	{
+		"src": "assets/beeldenbank/06 e 24_12_16 IMG_20241216_114152179~2.jpg",
+		"bekend": false
+	},
+	{ "src": "assets/beeldenbank/117bis.jpg", "bekend": false },
+	{ "src": "assets/beeldenbank/2e.jpg", "bekend": false },
+	{ "src": "assets/beeldenbank/3e.jpg", "bekend": false },
+	{
+		"src": "assets/beeldenbank/552300167_1185751226914516_2589327677915064613_n.jpg",
+		"bekend": false
+	},
+	{
+		"src": "assets/beeldenbank/552654475_1185750676914571_6040337733121702601_n.jpg",
+		"bekend": false
+	},
+	{ "src": "assets/beeldenbank/6e.jpg", "bekend": false },
+	{
+		"src": "assets/beeldenbank/e 24_12_16 IMG_20241216_114221360~2.jpg",
+		"bekend": false
+	},
+	{
+		"src": "assets/beeldenbank/e 24_12_16 IMG_20241216_114411924~2.jpg",
+		"bekend": false
+	},
+	{
+		"src": "assets/beeldenbank/e 24_12_30 IMG_20241230_161553951~5.jpg",
+		"bekend": false
+	},
+	{
+		"src": "assets/beeldenbank/e 25_1_16 IMG_20250116_163709622~2.jpg",
+		"bekend": false
+	},
+	{ "src": "assets/beeldenbank/e 25_8_7 P1000047.jpg", "bekend": false },
+	{
+		"src": "assets/beeldenbank/Noordwijk, Helihavenln, Helihaven 1958.jpg",
+		"bekend": true,
+		"datum": 1958,
+		"plaats": "Noordwijk"
+	},
+	{
+		"src": "assets/beeldenbank/Noordwijk, KonAlbertIIln, Proximustoren, Gevelbespiegeling 2 2008.jpg",
+		"bekend": true,
+		"datum": 2008,
+		"plaats": "Noordwijk"
+	},
+	{
+		"src": "assets/beeldenbank/Noordwijk, Maximiliaanpark 2009.jpg",
+		"bekend": true,
+		"datum": 2009,
+		"plaats": "Noordwijk"
+	},
+	{
+		"src": "assets/beeldenbank/Noordwijk, St-Joost, Muurschilderingen 1 1988.jpg",
+		"bekend": true,
+		"datum": 1988,
+		"plaats": "Noordwijk"
+	},
+	{
+		"src": "assets/beeldenbank/St-Gillis, Zuidstation, OudeHal & Trap 2 1992.jpg",
+		"bekend": true,
+		"datum": 1992,
+		"plaats": "St-Gillis"
+	},
+	{
+		"src": "assets/beeldenbank/St-Gillis, Zuidstation, Perrons, Overkapping 1996.jpg",
+		"bekend": true,
+		"datum": 1996,
+		"plaats": "St-Gillis"
+	},
+	{
+		"src": "assets/beeldenbank/St-Gillis, Zuidstation, Sloop 1 1994.jpg",
+		"bekend": true,
+		"datum": 1994,
+		"plaats": "St-Gillis"
+	},
+	{
+		"src": "assets/beeldenbank/St-Gillis, Zuidstation, Sloop 1 1995.jpg",
+		"bekend": true,
+		"datum": 1995,
+		"plaats": "St-Gillis"
+	}
+]
