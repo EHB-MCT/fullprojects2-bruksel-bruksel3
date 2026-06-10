@@ -16,13 +16,32 @@ function shuffle(arr) {
 	return copy;
 } // Randomly reorders an array using the Fisher-Yates algorithm
 
+const LOCATION_IDS = [
+	"Noordwijk",
+	"Kuregem",
+	"Schaarbeek",
+	"Leopoldwijk",
+	"St-Gillis",
+];
+
 function getFilteredImages() {
 	const bekendChecked = document.getElementById("bekend").checked;
 	const onbekendChecked = document.getElementById("onbekend").checked;
-	if (bekendChecked) return images.filter((img) => img.bekend);
-	if (onbekendChecked) return images.filter((img) => !img.bekend);
-	return images;
-} // Returns the filtered image list based on the active checkbox
+
+	const selectedLocations = LOCATION_IDS.filter(
+		(id) => document.getElementById(id)?.checked,
+	);
+
+	let filtered = images;
+	if (bekendChecked) filtered = filtered.filter((img) => img.bekend);
+	else if (onbekendChecked) filtered = filtered.filter((img) => !img.bekend);
+
+	if (selectedLocations.length > 0) {
+		filtered = filtered.filter((img) => selectedLocations.includes(img.plaats));
+	}
+
+	return filtered;
+} // Returns the filtered image list based on bekendheid and selected locations
 
 let shuffled = [];
 let offset = 0;
@@ -76,5 +95,10 @@ document.addEventListener("DOMContentLoaded", () => {
 	onbekendCb.addEventListener("change", () => {
 		if (onbekendCb.checked) bekendCb.checked = false;
 		loadImages();
+	});
+
+	LOCATION_IDS.forEach((id) => {
+		const cb = document.getElementById(id);
+		if (cb) cb.addEventListener("change", loadImages);
 	});
 }); // Sets up the load-more button and checkbox filter interactions on page load
