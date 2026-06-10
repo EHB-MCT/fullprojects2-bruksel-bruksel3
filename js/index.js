@@ -14,7 +14,7 @@ function shuffle(arr) {
 		[copy[i], copy[j]] = [copy[j], copy[i]];
 	}
 	return copy;
-}
+} // Randomly reorders an array using the Fisher-Yates algorithm
 
 function getFilteredImages() {
 	const bekendChecked = document.getElementById("bekend").checked;
@@ -22,7 +22,7 @@ function getFilteredImages() {
 	if (bekendChecked) return images.filter((img) => img.bekend);
 	if (onbekendChecked) return images.filter((img) => !img.bekend);
 	return images;
-}
+} // Returns the filtered image list based on the active checkbox
 
 let shuffled = [];
 let offset = 0;
@@ -42,7 +42,7 @@ function loadImages() {
 		gallery.appendChild(card);
 	}
 	offset = count;
-}
+} // Resets and renders the first batch of filtered images into the gallery
 
 document.addEventListener("DOMContentLoaded", () => {
 	const gallery = document.querySelector(".gallery");
@@ -77,4 +77,4 @@ document.addEventListener("DOMContentLoaded", () => {
 		if (onbekendCb.checked) bekendCb.checked = false;
 		loadImages();
 	});
-});
+}); // Sets up the load-more button and checkbox filter interactions on page load
