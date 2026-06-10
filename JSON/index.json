@@ -33,6 +33,12 @@
 	},
 	{ "src": "assets/beeldenbank/e 25_8_7 P1000047.jpg", "bekend": false },
 	{
+		"src": "assets/beeldenbank/Noordwijk, Gaucheret, Luchtfoto 1 1998.jpg",
+		"bekend": true,
+		"datum": 1998,
+		"plaats": "Noordwijk"
+	},
+	{
 		"src": "assets/beeldenbank/Noordwijk, Helihavenln, Helihaven 1958.jpg",
 		"bekend": true,
 		"datum": 1958,
@@ -55,6 +61,48 @@
 		"bekend": true,
 		"datum": 1988,
 		"plaats": "Noordwijk"
+	},
+	{
+		"src": "assets/beeldenbank/Schaarbeek, OudSchaarbeek, Haachtsestwg, HuisAutrique 18 2017.jpg",
+		"bekend": true,
+		"datum": 2017,
+		"plaats": "Schaarbeek"
+	},
+	{
+		"src": "assets/beeldenbank/Schaarbeek, OudSchaarbeek, Haachtsestwg, HuisAutrique 8 2017.jpg",
+		"bekend": true,
+		"datum": 2017,
+		"plaats": "Schaarbeek"
+	},
+	{
+		"src": "assets/beeldenbank/Schaarbeek, OudSchaarbeek, Koninginnepl, St-Mariakerk 2 1986.jpg",
+		"bekend": true,
+		"datum": 1986,
+		"plaats": "Schaarbeek"
+	},
+	{
+		"src": "assets/beeldenbank/Schaarbeek, OudSchaarbeek, KonSt-Mariastr, HallenVanSchaarbeek 1 1996.jpg",
+		"bekend": true,
+		"datum": 1996,
+		"plaats": "Schaarbeek"
+	},
+	{
+		"src": "assets/beeldenbank/Schaarbeek, Sporenbundel, JVanPraetln, Docks 5 2016.jpg",
+		"bekend": true,
+		"datum": 2016,
+		"plaats": "Schaarbeek"
+	},
+	{
+		"src": "assets/beeldenbank/Schaarbeek, Sporenbundel, JVanPraetln, Docks, Oudste Weverijfabriek 12 2016.jpg",
+		"bekend": true,
+		"datum": 2016,
+		"plaats": "Schaarbeek"
+	},
+	{
+		"src": "assets/beeldenbank/Schaarbeek, Sporenbundel, JVanPraetln, Docks, Oudste Weverijfabriek 2 2016.jpg",
+		"bekend": true,
+		"datum": 2016,
+		"plaats": "Schaarbeek"
 	},
 	{
 		"src": "assets/beeldenbank/St-Gillis, Zuidstation, OudeHal & Trap 2 1992.jpg",
