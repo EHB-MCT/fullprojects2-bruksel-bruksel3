@@ -94,12 +94,12 @@
         <div class="panel">
           <h1>Datum</h1>
           <div class="date-inputs">
-            <input type="text" placeholder="1920" />
-            <input type="text" placeholder="2019" />
+            <input type="number" id="fromYear" placeholder="1920" min="1920" max="2019" />
+            <input type="number" id="toYear" placeholder="2019" min="1920" max="2019" />
           </div>
           
           <div class="panel">
-          <h1>Bekendheid</h1>
+          <h1>Locatie van afbeelding bekend</h1>
           <div class="known-inputs">
           </div>
           <label
@@ -109,7 +109,7 @@
               name="bekend"
               value="bekend"
             />
-            Bekend</label
+            Ja</label
           ><label
             ><input
               type="checkbox"
@@ -117,7 +117,7 @@
               name="onbekend"
               value="onbekend"
             />
-            Onbekend</label
+            Nee</label
           >
         </div>
       </aside>
