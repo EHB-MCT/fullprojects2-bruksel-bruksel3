@@ -1,3 +1,31 @@
+// Background slideshow
+(function () {
+	const bgs = [
+		"assets/achtergrond1.jpg",
+		"assets/achtergrond2.jpg",
+		"assets/achtergrond3.jpg",
+		"assets/achtergrond4.jpg",
+		"assets/achtergrond5.jpg",
+	];
+	let current = 0;
+
+	const slides = bgs.map((src) => {
+		const div = document.createElement("div");
+		div.classList.add("bg-slide");
+		div.style.backgroundImage = `url("${src}")`;
+		document.body.appendChild(div);
+		return div;
+	});
+
+	slides[0].classList.add("active");
+
+	setInterval(() => {
+		slides[current].classList.remove("active");
+		current = (current + 1) % slides.length;
+		slides[current].classList.add("active");
+	}, 6000);
+})();
+
 let images = [];
 let searchQuery = "";
 
