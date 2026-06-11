@@ -1,94 +1,95 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="css/color.css" />
-    <link rel="stylesheet" href="css/flex.css" />
-    <link rel="stylesheet" href="css/font.css" />
-    <link rel="stylesheet" href="css/footer.css" />
-    <link rel="stylesheet" href="css/global.css" />
-    <link rel="stylesheet" href="css/header.css" />
-    <link rel="stylesheet" href="css/sidebar.css" />
-    <link rel="stylesheet" href="css/fame.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
-    />
-    <title>Beeldenbank</title>
-  </head>
-  <body>
-    <header>
-      <div class="header-inner">
-        <a href="#"
-          ><img src="assets/logo_high res.png" alt="logo" class="logo"
-        /></a>
-        <a href="index.html"><h2 class="title1">BEELDENBANK</h2></a>
-        <a href="#"><h2 class="title2">WALL OF FAME</h2></a>
-        <div class="header-actions">
-          <a href="#" class="icon-button" aria-label="info"
-            ><i class="fa-solid fa-circle-info"></i
-          ></a>
-          <a href="#" class="icon-button" aria-label="links"
-            ><i class="fa-solid fa-link"></i
-          ></a>
-        </div>
-      </div>
-    </header>
-    <div class="background"></div>
-    <section class="wall-of-fame">
-      <h1>Wall of Fame</h1>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="css/color.css" />
+		<link rel="stylesheet" href="css/flex.css" />
+		<link rel="stylesheet" href="css/font.css" />
+		<link rel="stylesheet" href="css/footer.css" />
+		<link rel="stylesheet" href="css/global.css" />
+		<link rel="stylesheet" href="css/header.css" />
+		<link rel="stylesheet" href="css/sidebar.css" />
+		<link rel="stylesheet" href="css/fame.css" />
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+		/>
+		<title>Beeldenbank</title>
+	</head>
+	<body>
+		<header>
+			<div class="header-inner">
+				<a href="#"
+					><img src="assets/logo_high res.png" alt="logo" class="logo"
+				/></a>
+				<a href="index.html"><h2 class="title1">BEELDENBANK</h2></a>
+				<a href="#"><h2 class="title2">WALL OF FAME</h2></a>
+				<div class="header-actions">
+					<a href="#" class="icon-button" aria-label="info"
+						><i class="fa-solid fa-circle-info"></i
+					></a>
+					<a href="#" class="icon-button" aria-label="links"
+						><i class="fa-solid fa-link"></i
+					></a>
+				</div>
+			</div>
+		</header>
+		<div class="wof-spacer"></div>
+		<div class="background"></div>
+		<section class="wall-of-fame">
+			<h1>Wall of Fame</h1>
 
-      <div class="project-boxes">
-        <div class="project-box">
-          <img src="assets/pexel1.jpg" alt="Project 1" class="project-image" />
-          <h2 class="project-title">Project One</h2>
-          <p class="project-description">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-          </p>
-        </div>
+			<div class="project-boxes">
+				<div class="project-box">
+					<img src="assets/pexel1.jpg" alt="Project 1" class="project-image" />
+					<h2 class="project-title">Project One</h2>
+					<p class="project-description">
+						Lorem ipsum dolor sit amet consectetur adipisicing elit.
+					</p>
+				</div>
 
-        <div class="project-box">
-          <img src="assets/pexel1.jpg" alt="Project 2" class="project-image" />
-          <h2 class="project-title">Project Two</h2>
-          <p class="project-description">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-          </p>
-        </div>
+				<div class="project-box">
+					<img src="assets/pexel1.jpg" alt="Project 2" class="project-image" />
+					<h2 class="project-title">Project Two</h2>
+					<p class="project-description">
+						Lorem ipsum dolor sit amet consectetur adipisicing elit.
+					</p>
+				</div>
 
-        <div class="project-box">
-          <img src="assets/pexel1.jpg" alt="Project 3" class="project-image" />
-          <h2 class="project-title">Project Three</h2>
-          <p class="project-description">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-          </p>
-        </div>
-      </div>
-    </section>
-    <script>
-      (function () {
-        const bgs = [
-          "assets/achtergrond1.jpg",
-          "assets/achtergrond2.jpg",
-          "assets/achtergrond3.jpg",
-          "assets/achtergrond4.jpg",
-          "assets/achtergrond5.jpg",
-        ];
-        let current = 0;
-        const slides = bgs.map((src) => {
-          const div = document.createElement("div");
-          div.classList.add("bg-slide");
-          div.style.backgroundImage = `url("${src}")`;
-          document.body.appendChild(div);
-          return div;
-        });
-        slides[0].classList.add("active");
-        setInterval(() => {
-          slides[current].classList.remove("active");
-          current = (current + 1) % slides.length;
-          slides[current].classList.add("active");
-        }, 5000);
-      })();
-    </script>
-  </body>
+				<div class="project-box">
+					<img src="assets/pexel1.jpg" alt="Project 3" class="project-image" />
+					<h2 class="project-title">Project Three</h2>
+					<p class="project-description">
+						Lorem ipsum dolor sit amet consectetur adipisicing elit.
+					</p>
+				</div>
+			</div>
+		</section>
+		<script>
+			(function () {
+				const bgs = [
+					"assets/achtergrond1.jpg",
+					"assets/achtergrond2.jpg",
+					"assets/achtergrond3.jpg",
+					"assets/achtergrond4.jpg",
+					"assets/achtergrond5.jpg",
+				];
+				let current = 0;
+				const slides = bgs.map((src) => {
+					const div = document.createElement("div");
+					div.classList.add("bg-slide");
+					div.style.backgroundImage = `url("${src}")`;
+					document.body.appendChild(div);
+					return div;
+				});
+				slides[0].classList.add("active");
+				setInterval(() => {
+					slides[current].classList.remove("active");
+					current = (current + 1) % slides.length;
+					slides[current].classList.add("active");
+				}, 5000);
+			})();
+		</script>
+	</body>
 </html>

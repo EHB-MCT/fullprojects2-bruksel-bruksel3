@@ -3,9 +3,16 @@
 	--subtitle-font: "Arial", serif;
 }
 
+.wof-spacer {
+	margin-top: 80px;
+	height: 58px;
+	margin-bottom: 80px;
+}
+
 .wall-of-fame {
 	width: 100%;
 	text-align: center;
+	background-color: white;
 }
 
 /* Heading */
