@@ -132,3 +132,10 @@
 .meer-btn:hover {
 	background: #32a023;
 }
+.fa-magnifying-glass {
+	position: relative;
+	top: 36px;
+	left: 17px;
+	font-size: 17px;
+	font-weight: bold;
+}
