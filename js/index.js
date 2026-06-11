@@ -45,7 +45,7 @@ function getFilteredImages() {
 
 let shuffled = [];
 let offset = 0;
-const CARDS_PER_PAGE = 12;
+const CARDS_PER_MEER = 12;
 
 function loadImages() {
 	const filtered = getFilteredImages();
@@ -53,7 +53,7 @@ function loadImages() {
 	offset = 0;
 	const gallery = document.querySelector(".gallery");
 	gallery.innerHTML = "";
-	const count = Math.min(CARDS_PER_PAGE, shuffled.length);
+	const count = Math.min(CARDS_PER_MEER, shuffled.length);
 	for (let i = 0; i < count; i++) {
 		const card = document.createElement("div");
 		card.classList.add("card");
@@ -73,7 +73,7 @@ document.addEventListener("DOMContentLoaded", () => {
 	meerBtn.addEventListener("click", () => {
 		if (offset >= shuffled.length) return;
 		const gallery = document.querySelector(".gallery");
-		const count = Math.min(CARDS_PER_PAGE, shuffled.length - offset);
+		const count = Math.min(CARDS_PER_MEER, shuffled.length - offset);
 		for (let i = 0; i < count; i++) {
 			const card = document.createElement("div");
 			card.classList.add("card");
