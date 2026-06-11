@@ -1,18 +1,28 @@
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
 }
 html,
 body {
-  min-height: 100%;
+	min-height: 100%;
 }
 body {
-  font-family: "Roboto", sans-serif;
-  color: #111;
-  background-image: url("../assets/achtergrond.png");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
+	font-family: "Roboto", sans-serif;
+	color: #111;
+}
+
+.bg-slide {
+	position: fixed;
+	inset: 0;
+	z-index: -2;
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+	transition: opacity 1.5s ease-in-out;
+	opacity: 0;
+}
+
+.bg-slide.active {
+	opacity: 1;
 }
