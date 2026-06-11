@@ -1,16 +1,10 @@
 let images = [];
+let searchQuery = "";
 
 fetch("JSON/index.json")
 	.then((response) => response.json())
 	.then((data) => {
 		const datalist = document.getElementById("suggestions");
-		const forbidden = new Set();
-
-		data.forEach((item) => {
-			forbidden.add(String(item.plaats).toLowerCase());
-			forbidden.add(String(item.datum));
-		});
-
 		const suggestions = new Set();
 
 		data.forEach((item) => {
@@ -22,8 +16,9 @@ fetch("JSON/index.json")
 			filteredParts.forEach((word) => {
 				const w = word.trim();
 				if (!w) return;
-				if (forbidden.has(w.toLowerCase())) return;
-				if (w.length < 1) return;
+				//if (forbidden.has(w.toLowerCase())) return;
+				if (w.length < 2) return;
+				if (!isNaN(w)) return;
 
 				suggestions.add(w);
 			});
@@ -88,6 +83,17 @@ function getFilteredImages() {
 		});
 	}
 
+	if (searchQuery) {
+		filtered = filtered.filter((img) => {
+			const filename = img.src.split("/").pop().toLowerCase();
+			const clean = filename.replace(/\.[^/.]+$/, "");
+
+			const parts = clean.split(/[, ]+/).slice(1);
+
+			return parts.some((word) => word.toLowerCase().includes(searchQuery));
+		});
+	}
+
 	return filtered;
 } // Returns the filtered image list based on bekendheid, selected locations, and year range
 
@@ -112,6 +118,11 @@ function loadImages() {
 } // Resets and renders the first batch of filtered images into the gallery
 
 document.addEventListener("DOMContentLoaded", () => {
+	const searchInput = document.getElementById("searchInput");
+	searchInput.addEventListener("input", (e) => {
+		searchQuery = e.target.value.toLowerCase().trim();
+		loadImages();
+	});
 	const gallery = document.querySelector(".gallery");
 	const meerBtn = document.createElement("button");
 	meerBtn.textContent = "meer";
