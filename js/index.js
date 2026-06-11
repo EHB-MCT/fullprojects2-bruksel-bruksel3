@@ -29,6 +29,42 @@
 let images = [];
 
 fetch("JSON/index.json")
+	.then((response) => response.json())
+	.then((data) => {
+		const datalist = document.getElementById("suggestions");
+		const forbidden = new Set();
+
+		data.forEach((item) => {
+			forbidden.add(String(item.plaats).toLowerCase());
+			forbidden.add(String(item.datum));
+		});
+
+		const suggestions = new Set();
+
+		data.forEach((item) => {
+			const filename = item.src.split("/").pop();
+			const clean = filename.replace(/\.[^/.]+$/, "");
+			const parts = clean.split(/[, ]+/);
+			const filteredParts = parts.slice(1);
+
+			filteredParts.forEach((word) => {
+				const w = word.trim();
+				if (!w) return;
+				if (forbidden.has(w.toLowerCase())) return;
+				if (w.length < 1) return;
+
+				suggestions.add(w);
+			});
+		});
+
+		suggestions.forEach((word) => {
+			const option = document.createElement("option");
+			option.value = word;
+			datalist.appendChild(option);
+		});
+	});
+
+fetch("JSON/index.json")
 	.then((res) => res.json())
 	.then((data) => {
 		images = data;
