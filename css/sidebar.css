@@ -1,137 +1,145 @@
 .container {
-	display: flex;
-	gap: 32px;
-	width: 100%;
-	max-width: 1300px;
-	margin: 0 auto;
-	padding: 0 32px 40px;
+  display: flex;
+  gap: 32px;
+  width: 100%;
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 0 32px 40px;
 }
 .sidebar {
-	width: 320px;
-	background: rgba(255, 255, 255, 0.4);
-	border-radius: 32px;
-	padding: 32px;
-	box-shadow: 0 30px 60px rgba(0, 0, 0, 0.18);
-	backdrop-filter: blur(16px);
+  width: 320px;
+  background: rgba(255, 255, 255, 0.4);
+  border-radius: 32px;
+  padding: 32px;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.18);
+  backdrop-filter: blur(16px);
+}
+.background {
+  position: absolute;
+  width: 100%;
+  height: 1200px;
+  background-color: #fff;
+  z-index: -1;
+  margin-top: 35px;
 }
 .search-box {
-	position: relative;
-	margin-bottom: 32px;
+  position: relative;
+  margin-bottom: 32px;
 }
 .search-box input {
-	width: 100%;
-	padding: 16px 18px 16px 46px;
-	border: none;
-	border-radius: 999px;
-	background: #f5f5f5;
-	color: #111;
-	font-size: 1rem;
+  width: 100%;
+  padding: 16px 18px 16px 46px;
+  border: none;
+  border-radius: 999px;
+  background: #f5f5f5;
+  color: #111;
+  font-size: 1rem;
 }
 .search-box::before {
-	content: "";
-	position: absolute;
-	left: 18px;
-	top: 50%;
-	transform: translateY(-50%);
-	font-size: 1rem;
+  content: "";
+  position: absolute;
+  left: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1rem;
 }
 .panel {
-	margin-bottom: 32px;
+  margin-bottom: 32px;
 }
 .panel h1 {
-	font-size: 1.6rem;
-	margin-bottom: 20px;
+  font-size: 1.6rem;
+  margin-bottom: 20px;
 }
 .panel label {
-	display: flex;
-	align-items: center;
-	gap: 0.9rem;
-	margin-bottom: 18px;
-	color: #111;
-	font-size: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  margin-bottom: 18px;
+  color: #111;
+  font-size: 1rem;
 }
 .panel label input {
-	accent-color: #3fc02b;
+  accent-color: #3fc02b;
 }
 .date-inputs {
-	display: flex;
-	gap: 14px;
-	margin-bottom: 24px;
+  display: flex;
+  gap: 14px;
+  margin-bottom: 24px;
 }
 .date-inputs input {
-	width: 100%;
-	border: none;
-	border-radius: 999px;
-	padding: 14px 18px;
-	background: #f5f5f5;
-	color: #111;
+  width: 100%;
+  border: none;
+  border-radius: 999px;
+  padding: 14px 18px;
+  background: #f5f5f5;
+  color: #111;
 }
 .content {
-	flex: 1;
-	display: flex;
-	flex-direction: column;
-	padding: 12px 0 0;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 12px 0 0;
 }
 .top-filters {
-	display: flex;
-	justify-content: flex-end;
-	gap: 16px;
-	margin-bottom: 28px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 16px;
+  margin-bottom: 28px;
 }
 .filter-pill {
-	display: inline-flex;
-	align-items: center;
-	justify-content: center;
-	padding: 0.85rem 1.3rem;
-	background: rgba(255, 255, 255, 0.88);
-	color: #111;
-	border-radius: 999px;
-	font-weight: 600;
-	box-shadow: 0 18px 40px rgba(0, 0, 0, 0.12);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.85rem 1.3rem;
+  background: rgb(63, 192, 43);
+  color: #fff;
+  border-radius: 999px;
+  font-weight: 600;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.12);
 }
 .gallery {
-	display: grid;
-	grid-template-columns: repeat(4, minmax(0, 1fr));
-	gap: 24px;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 24px;
 }
 .card {
-	min-height: 220px;
-	max-height: 250px;
-	border-radius: 32px;
-	overflow: hidden;
-	background: rgba(255, 255, 255, 0.92);
-	box-shadow: 0 25px 45px rgba(0, 0, 0, 0.16);
+  min-height: 220px;
+  max-height: 250px;
+  border-radius: 32px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: 0 25px 45px rgba(0, 0, 0, 0.16);
 }
 .fa-xmark {
-	margin-left: 12px;
+  margin-left: 12px;
 }
 .fa-xmark:hover {
-	color: #3fc02b96;
+  color: #3fc02b96;
 }
 #Noordwijk {
-	border-radius: 50%;
+  border-radius: 50%;
 }
 .meer-btn {
-	display: block;
-	margin: 28px auto 0;
-	padding: 0.85rem 2.5rem;
-	background: #3fc02b;
-	color: #fff;
-	border: none;
-	border-radius: 999px;
-	font-size: 1rem;
-	font-weight: 600;
-	cursor: pointer;
-	box-shadow: 0 18px 40px rgba(0, 0, 0, 0.16);
-	transition: background 0.2s;
+  display: block;
+  margin: 28px auto 0;
+  padding: 0.85rem 2.5rem;
+  background: #3fc02b;
+  color: #fff;
+  border: none;
+  border-radius: 999px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.16);
+  transition: background 0.2s;
 }
 .meer-btn:hover {
-	background: #32a023;
+  background: #32a023;
 }
 .fa-magnifying-glass {
-	position: relative;
-	top: 36px;
-	left: 17px;
-	font-size: 17px;
-	font-weight: bold;
+  position: relative;
+  top: 36px;
+  left: 17px;
+  font-size: 17px;
+  font-weight: bold;
 }
