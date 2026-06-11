@@ -16,7 +16,7 @@
 .background {
 	position: absolute;
 	width: 100%;
-	height: 1200px;
+	height: 300%;
 	background-color: #fff;
 	z-index: -1;
 	margin-top: 35px;
@@ -107,6 +107,7 @@
 	justify-content: flex-end;
 	gap: 16px;
 	margin-bottom: 28px;
+	margin-top: 22px;
 }
 .filter-pill {
 	display: inline-flex;
