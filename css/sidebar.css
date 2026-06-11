@@ -66,10 +66,6 @@
 	background: #f5f5f5;
 	color: #111;
 }
-.slider {
-	width: 100%;
-	accent-color: #3fc02b;
-}
 .content {
 	flex: 1;
 	display: flex;
