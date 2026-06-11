@@ -22,6 +22,8 @@
         <a href="#"
           ><img src="assets/logo_high res.png" alt="logo" class="logo"
         /></a>
+        <a href="#"><h2 class="title1">BEELDENBANK</h2></a>
+        <a href="wall-of-fame.html"><h2 class="title2">WALL OF FAME</h2></a>
         <div class="header-actions">
           <a href="#" class="icon-button" aria-label="info"
             ><i class="fa-solid fa-circle-info"></i
@@ -32,6 +34,8 @@
         </div>
       </div>
     </header>
+    <div class="title3"><h1>BEELDENBANK</h1></div>
+    <div class="background"></div>
     <div class="container">
       <aside class="sidebar">
         <div class="search-box">
@@ -90,12 +94,12 @@
         <div class="panel">
           <h1>Datum</h1>
           <div class="date-inputs">
-            <input type="text" placeholder="1920" />
-            <input type="text" placeholder="2019" />
+            <input type="number" id="fromYear" placeholder="1920" min="1920" max="2019" />
+            <input type="number" id="toYear" placeholder="2019" min="1920" max="2019" />
           </div>
           
           <div class="panel">
-          <h1>Bekendheid</h1>
+          <h1>Locatie van afbeelding is bekend</h1>
           <div class="known-inputs">
           </div>
           <label
@@ -105,7 +109,7 @@
               name="bekend"
               value="bekend"
             />
-            Bekend</label
+            Ja</label
           ><label
             ><input
               type="checkbox"
@@ -113,18 +117,13 @@
               name="onbekend"
               value="onbekend"
             />
-            Onbekend</label
+            Nee</label
           >
         </div>
       </aside>
       <main class="content">
         <div class="top-filters">
-          <span class="filter-pill"
-            >1920 - 2019 <i class="fa-solid fa-xmark" class="delete"></i
-          ></span>
-          <span class="filter-pill"
-            >Noordwijk <i class="fa-solid fa-xmark" class="delete"></i
-          ></span>
+          
         </div>
         <div class="gallery">
           <div class="card"></div>

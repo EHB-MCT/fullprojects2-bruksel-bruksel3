@@ -76,8 +76,20 @@ function getFilteredImages() {
 		filtered = filtered.filter((img) => selectedLocations.includes(img.plaats));
 	}
 
+	const fromYear = parseInt(document.getElementById("fromYear").value);
+	const toYear = parseInt(document.getElementById("toYear").value);
+
+	if (!isNaN(fromYear) || !isNaN(toYear)) {
+		filtered = filtered.filter((img) => {
+			if (!img.datum) return false;
+			const from = isNaN(fromYear) ? 1920 : fromYear;
+			const to = isNaN(toYear) ? 2019 : toYear;
+			return img.datum >= from && img.datum <= to;
+		});
+	}
+
 	return filtered;
-} // Returns the filtered image list based on bekendheid and selected locations
+} // Returns the filtered image list based on bekendheid, selected locations, and year range
 
 let shuffled = [];
 let offset = 0;
@@ -123,18 +135,51 @@ document.addEventListener("DOMContentLoaded", () => {
 	const bekendCb = document.getElementById("bekend");
 	const onbekendCb = document.getElementById("onbekend");
 
+	function clearOtherFilters() {
+		bekendCb.checked = false;
+		LOCATION_IDS.forEach((id) => {
+			const cb = document.getElementById(id);
+			if (cb) cb.checked = false;
+		});
+		const fromInput = document.getElementById("fromYear");
+		const toInput = document.getElementById("toYear");
+		if (fromInput) fromInput.value = "";
+		if (toInput) toInput.value = "";
+	}
+
+	function uncheckOnbekend() {
+		onbekendCb.checked = false;
+	}
+
 	bekendCb.addEventListener("change", () => {
-		if (bekendCb.checked) onbekendCb.checked = false;
+		if (bekendCb.checked) uncheckOnbekend();
 		loadImages();
 	});
 
 	onbekendCb.addEventListener("change", () => {
-		if (onbekendCb.checked) bekendCb.checked = false;
+		if (onbekendCb.checked) clearOtherFilters();
 		loadImages();
 	});
 
 	LOCATION_IDS.forEach((id) => {
 		const cb = document.getElementById(id);
-		if (cb) cb.addEventListener("change", loadImages);
+		if (cb)
+			cb.addEventListener("change", () => {
+				if (cb.checked) uncheckOnbekend();
+				loadImages();
+			});
 	});
+
+	const fromInput = document.getElementById("fromYear");
+	const toInput = document.getElementById("toYear");
+	if (fromInput)
+		fromInput.addEventListener("input", () => {
+			if (fromInput.value) uncheckOnbekend();
+			loadImages();
+		});
+	if (toInput)
+		toInput.addEventListener("input", () => {
+			if (toInput.value) uncheckOnbekend();
+			loadImages();
+		});
 }); // Sets up the load-more button and checkbox filter interactions on page load
