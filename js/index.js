@@ -76,11 +76,25 @@ function shuffle(arr) {
 } // Randomly reorders an array using the Fisher-Yates algorithm
 
 const LOCATION_IDS = [
-	"Noordwijk",
-	"Kuregem",
+	"Anderlecht",
+	"Brussel",
+	"Elsene",
+	"Etterbeek",
+	"Evere",
+	"Ganshoren",
+	"Jette",
 	"Schaarbeek",
-	"Leopoldwijk",
-	"St-Gillis",
+	"Ukkel",
+	"Vorst",
+	"Sint-Agatha-Berchem",
+	"Sint-Gillis",
+	"Sint-Jans-Molenbeek",
+	"Sint-Pieters-Woluwe",
+	"Sint-Lambrechts-Woluwe",
+	"Sint-Joost-ten-Node",
+	"Watermaal-Bosvoorde",
+	"Oudergem",
+	"Koekelberg",
 ];
 
 function getFilteredImages() {
