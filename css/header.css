@@ -47,15 +47,30 @@ header {
 	width: 40%;
 	position: relative;
 	text-align: left;
+	padding-top: 30px;
+	padding-bottom: 30px;
 	color: #fff;
 }
-.hero-h1 {
+.hero-h1 h1 {
 	font-family: "Inter", sans-serif;
 	font-size: 40px;
 }
-.hero-p {
+.hero-p p {
 	font-family: "Inter", sans-serif;
 	font-size: 16px;
+	padding-top: 10px;
+}
+.hero::before {
+	content: "";
+	position: absolute;
+	inset: 0;
+	background: linear-gradient(
+		to top,
+		rgba(0, 0, 0, 0.7),
+		rgba(0, 0, 0, 0.2),
+		transparent
+	);
+	z-index: -1;
 }
 .header-actions {
 	position: absolute;
