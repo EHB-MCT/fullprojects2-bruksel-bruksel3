@@ -43,13 +43,15 @@ header {
 	transition: opacity 0.2s ease;
 }
 .hero {
-	left: 30%;
 	width: 40%;
+	left: 30%;
+	height: 250px;
 	position: relative;
-	text-align: left;
 	padding-top: 30px;
 	padding-bottom: 30px;
 	color: #fff;
+	background-size: cover;
+	background-position: center;
 }
 .hero-h1 h1 {
 	font-family: "Inter", sans-serif;
@@ -60,18 +62,7 @@ header {
 	font-size: 16px;
 	padding-top: 10px;
 }
-.hero::before {
-	content: "";
-	position: absolute;
-	inset: 0;
-	background: linear-gradient(
-		to top,
-		rgba(0, 0, 0, 0.7),
-		rgba(0, 0, 0, 0.2),
-		transparent
-	);
-	z-index: -1;
-}
+
 .header-actions {
 	position: absolute;
 	right: 24px;
