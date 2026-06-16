@@ -7,6 +7,11 @@ header {
 	border-radius: 0 0 15px 15px;
 	margin-bottom: 20px;
 }
+
+header.green{
+	background: #4ec02a;
+}
+
 .header-inner {
 	position: relative;
 	width: 100%;
