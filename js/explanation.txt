@@ -1,0 +1,288 @@
+================================================================================
+                     CODE EXPLANATION — index.js (Gallery Script)
+================================================================================
+
+OVERVIEW
+--------
+This script powers an interactive image gallery with filtering, search, and a
+background slideshow. It fetches image data from a JSON file, lets users filter
+by neighbourhood, year range, and location status (known/unknown), and loads
+images progressively via a "meer" (more) button. Everything runs in the browser
+without a backend framework.
+
+
+--------------------------------------------------------------------------------
+SECTION 1 — GLOBAL VARIABLES
+--------------------------------------------------------------------------------
+
+Four global variables are declared at the top of the file:
+
+  let shuffled = [];
+  let offset = 0;
+  const CARDS_PER_MEER = 12;
+  let images = [];
+  let searchQuery = "";
+
+  - shuffled     : holds the currently visible (filtered + randomised) image list.
+                   It is rebuilt every time a filter changes.
+
+  - offset       : tracks how many images have already been rendered. When the
+                   user clicks "meer", the script reads from shuffled[offset] onward
+                   and then advances offset by CARDS_PER_MEER.
+
+  - CARDS_PER_MEER : a constant that controls how many cards appear per batch.
+                   Set to 12 so the grid fills neatly without overwhelming the page.
+
+  - images       : the master list of all images, loaded once from the JSON file
+                   and never mutated. Every filter operation starts from this list.
+
+  - searchQuery  : stores whatever the user has typed in the search box (lower-
+                   cased and trimmed). An empty string means no search is active.
+
+
+--------------------------------------------------------------------------------
+SECTION 2 — BACKGROUND SLIDESHOW
+--------------------------------------------------------------------------------
+
+The slideshow is wrapped in an Immediately Invoked Function Expression (IIFE),
+meaning it runs once as soon as the browser parses the script, without polluting
+the global scope.
+
+How it works:
+
+  1. An array (bgs) lists five background image paths.
+  2. For each path, a <div> is created, given the CSS class "bg-slide", and its
+     background-image style is set to that path. The div is appended to <body>.
+  3. The CSS class "active" is added to the first slide immediately so the page
+     does not appear blank on load.
+  4. setInterval runs every 3000 milliseconds (3 seconds). On each tick it:
+       a. removes "active" from the current slide (CSS handles the fade-out),
+       b. increments the index (wrapping around with % slides.length),
+       c. adds "active" to the next slide (CSS handles the fade-in).
+
+The actual transition animation is defined in CSS, not here — the script only
+toggles the class name. This keeps the visual logic in CSS and the timing logic
+in JavaScript, a clean separation of concerns.
+
+
+--------------------------------------------------------------------------------
+SECTION 3 — SEARCH SUGGESTIONS (AUTOCOMPLETE)
+--------------------------------------------------------------------------------
+
+The first fetch call to "JSON/index.json" is used purely to populate an HTML
+<datalist> element (#suggestions) with autocomplete options.
+
+Step-by-step:
+
+  1. Each image object has a "src" property (e.g. "images/001, Park, Ixelles.jpg").
+  2. The filename is extracted with .split("/").pop() and the extension is stripped.
+  3. The clean name is split on commas and spaces into "parts".
+  4. The first part (usually a numeric ID) is discarded with .slice(1).
+  5. Each remaining word is validated:
+       - must not be empty after trimming,
+       - must be at least 2 characters long,
+       - must not be a pure number (isNaN check).
+  6. Valid words are added to a Set (which automatically removes duplicates).
+  7. Each unique word becomes an <option> inside the <datalist>.
+
+The result is that typing in the search box shows context-aware suggestions
+derived directly from the image filenames, without any manual keyword list.
+
+
+--------------------------------------------------------------------------------
+SECTION 4 — LOADING THE MASTER IMAGE LIST
+--------------------------------------------------------------------------------
+
+A second fetch call (also to "JSON/index.json") populates the global "images"
+array and then calls loadImages() to render the initial gallery.
+
+Note: this is a separate fetch from the suggestions fetch above. Both run in
+parallel because they are not chained — the browser fires both requests at the
+same time. The two fetches serve different purposes and neither depends on the
+other completing first.
+
+
+--------------------------------------------------------------------------------
+SECTION 5 — THE shuffle() FUNCTION
+--------------------------------------------------------------------------------
+
+  function shuffle(arr) {
+      const copy = [...arr];
+      for (let i = copy.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [copy[i], copy[j]] = [copy[j], copy[i]];
+      }
+      return copy;
+  }
+
+This implements the Fisher-Yates shuffle algorithm. It:
+  - creates a shallow copy of the input so the original array is not mutated,
+  - iterates from the last element down to the second,
+  - picks a random index between 0 and the current position (inclusive),
+  - swaps the two elements using destructuring assignment.
+
+The result is a new array with the same elements in a random order. Every time
+filters are applied, shuffle() is called on the filtered subset so users see
+images in a different order on each visit or filter change.
+
+
+--------------------------------------------------------------------------------
+SECTION 6 — LOCATION CONSTANTS
+--------------------------------------------------------------------------------
+
+LOCATION_IDS is a plain array of strings matching the 19 Brussels municipalities.
+Each string corresponds to the id of a checkbox in the HTML. The script iterates
+this array instead of querying the DOM for every checkbox, which makes the code
+easier to read and extend (adding a new location only requires adding its name
+here and a matching checkbox in the HTML).
+
+
+--------------------------------------------------------------------------------
+SECTION 7 — getFilteredImages()
+--------------------------------------------------------------------------------
+
+This is the core filtering function. It reads the current state of every filter
+control and returns a subset of the global "images" array.
+
+Filters applied in order:
+
+  1. BEKENDHEID (location known/unknown)
+       Reads the "bekend" and "onbekend" checkboxes. If "bekend" is checked,
+       only images where img.bekend is truthy are kept. If "onbekend" is checked,
+       only images where img.bekend is falsy are kept. If neither is checked,
+       all images pass this step.
+
+  2. WIJK (neighbourhood)
+       Reads all LOCATION_IDS checkboxes and collects checked ones into
+       selectedLocations[]. If the array is non-empty, only images whose
+       img.plaats value appears in selectedLocations are kept.
+
+  3. YEAR RANGE
+       Reads the fromYear and toYear inputs and parses them as integers. If
+       either value is present (isNaN check), a date filter is applied:
+         - images without a datum property are excluded,
+         - images are kept only when their datum falls within [from, to],
+         - missing inputs default to 1920 (from) and 2019 (to).
+
+  4. SEARCH QUERY
+       If searchQuery is non-empty, each image's filename is cleaned (extension
+       removed, first part dropped) and split into words. The image is kept only
+       if at least one word includes the search query as a substring. This allows
+       partial matches (e.g. "park" matches "Parkstraat").
+
+The function returns the surviving images as a new array. It never modifies
+"images" directly.
+
+
+--------------------------------------------------------------------------------
+SECTION 8 — loadImages()
+--------------------------------------------------------------------------------
+
+  function loadImages() {
+      const filtered = getFilteredImages();
+      shuffled = shuffle(filtered);
+      offset = 0;
+      const gallery = document.querySelector(".gallery");
+      gallery.innerHTML = "";
+      const count = Math.min(CARDS_PER_MEER, shuffled.length);
+      for (let i = 0; i < count; i++) { ... }
+      offset = count;
+  }
+
+This function is called whenever any filter changes or the page first loads.
+
+  1. It gets the filtered list and shuffles it into the global "shuffled".
+  2. offset is reset to 0 (start from the beginning of the new list).
+  3. The gallery container is cleared with innerHTML = "" (removes old cards).
+  4. Up to CARDS_PER_MEER (12) cards are created and appended.
+  5. offset is set to the number of cards just rendered.
+
+Each card is a <div class="card"> containing an <img> tag. The image src comes
+directly from the JSON data (img.src).
+
+
+--------------------------------------------------------------------------------
+SECTION 9 — renderFilterPills()
+--------------------------------------------------------------------------------
+
+This function draws small "pill" badges above the gallery to show which filters
+are currently active. Each pill has an X button that, when clicked, clears that
+specific filter and reloads the gallery.
+
+Three types of pills are created:
+
+  1. WIJK pill — shows the first selected neighbourhood. If more than one is
+     selected, "+ N" is appended (e.g. "Elsene + 2"). Clicking removes all
+     selected neighbourhood checkboxes.
+
+  2. DATUM pill — shows the active year range as "1950 – 1980", "vanaf 1950",
+     or "tot 1980" depending on which inputs are filled. Clicking clears both
+     year inputs.
+
+  3. BEKEND/ONBEKEND pill — shows "Locatie: Ja" or "Locatie: Nee". Clicking
+     unchecks both checkboxes.
+
+The container (.top-filters) is cleared and rebuilt on every call, so pills
+always reflect the exact current filter state.
+
+
+--------------------------------------------------------------------------------
+SECTION 10 — DOMContentLoaded EVENT HANDLER
+--------------------------------------------------------------------------------
+
+Everything inside the DOMContentLoaded callback runs after the HTML is fully
+parsed, ensuring all elements exist before the script tries to access them.
+
+SEARCH INPUT
+  An "input" event listener on #searchInput updates searchQuery and calls
+  loadImages() on every keystroke, giving instant live filtering.
+
+MEER (LOAD MORE) BUTTON
+  A <button> is created dynamically and inserted after the .gallery element.
+  Its click handler:
+    - returns early if offset has reached the end of shuffled[],
+    - appends the next batch of CARDS_PER_MEER cards,
+    - hides itself when all images have been loaded (offset >= shuffled.length).
+
+CHECKBOX INTERACTIONS
+
+  The checkboxes have mutual-exclusion rules enforced by two helper functions:
+
+    clearOtherFilters() — called when "onbekend" is checked. It unchecks
+    "bekend", all location checkboxes, and clears both year inputs. This is
+    because "unknown location" images have no neighbourhood or date data, so
+    those filters would always return zero results.
+
+    uncheckOnbekend() — called when "bekend", any location, or any year input
+    is activated. It simply unchecks "onbekend" to avoid conflicting states.
+
+  After toggling checkboxes or year inputs, both loadImages() and
+  renderFilterPills() are called to keep the gallery and the pills in sync.
+
+
+--------------------------------------------------------------------------------
+SUMMARY — DATA FLOW
+--------------------------------------------------------------------------------
+
+  JSON file
+      |
+      v
+  images[] (master list, never changed)
+      |
+      v
+  getFilteredImages() (applies all active filters)
+      |
+      v
+  shuffle() (randomises the filtered subset)
+      |
+      v
+  shuffled[] (global, rebuilt on every filter change)
+      |
+      +-- first 12 cards --> rendered immediately by loadImages()
+      |
+      +-- next batches  --> appended by the "meer" button click handler
+
+
+================================================================================
+                                  END OF DOCUMENT
+================================================================================
