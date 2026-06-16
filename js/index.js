@@ -1,3 +1,8 @@
+let shuffled = []; // Global variable to hold the currently shuffled list of images based on filters
+let offset = 0; // Global variables to manage the shuffled image list and the current offset for loading more images
+const CARDS_PER_MEER = 12; // Number of images to load each time the "meer" button is clicked
+let images = []; // Global variable to hold the full list of images fetched from the JSON file
+let searchQuery = ""; // Global variable to hold the current search query for filtering images based on filename parts
 // Background slideshow
 (function () {
 	const bgs = [
@@ -8,7 +13,7 @@
 		"assets/achtergrond5.jpg",
 	];
 	let current = 0;
-
+	// Preload images and create divs for each background image, then start the slideshow interval
 	const slides = bgs.map((src) => {
 		const div = document.createElement("div");
 		div.classList.add("bg-slide");
@@ -16,7 +21,7 @@
 		document.body.appendChild(div);
 		return div;
 	});
-
+	// Show the first slide immediately
 	slides[0].classList.add("active");
 
 	setInterval(() => {
@@ -25,9 +30,7 @@
 		slides[current].classList.add("active");
 	}, 3000);
 })();
-
-let images = [];
-let searchQuery = "";
+// Main gallery and filtering logic
 
 fetch("JSON/index.json")
 	.then((response) => response.json())
@@ -37,17 +40,17 @@ fetch("JSON/index.json")
 
 		data.forEach((item) => {
 			const filename = item.src.split("/").pop();
-			const clean = filename.replace(/\.[^/.]+$/, "");
-			const parts = clean.split(/[, ]+/);
-			const filteredParts = parts.slice(1);
-
+			const clean = filename.replace(/\.[^/.]+$/, ""); // Remove file extension from the filename to get a clean base name
+			const parts = clean.split(/[, ]+/); // Split the clean filename into parts using commas and spaces as delimiters
+			const filteredParts = parts.slice(1); // Exclude the first part of the filename, which is typically not useful for search suggestions
+			// Process each part of the filename (except the first one) to extract potential search suggestions
 			filteredParts.forEach((word) => {
 				const w = word.trim();
 				if (!w) return;
 				//if (forbidden.has(w.toLowerCase())) return;
 				if (w.length < 2) return;
 				if (!isNaN(w)) return;
-
+				// Add the cleaned and validated word to the suggestions set, ensuring uniqueness
 				suggestions.add(w);
 			});
 		});
@@ -58,6 +61,7 @@ fetch("JSON/index.json")
 			datalist.appendChild(option);
 		});
 	});
+// After populating the search suggestions, fetch the main image data and initialize the gallery
 
 fetch("JSON/index.json")
 	.then((res) => res.json())
@@ -96,7 +100,7 @@ const LOCATION_IDS = [
 	"Oudergem",
 	"Koekelberg",
 ];
-
+// List of location IDs corresponding to checkboxes for filtering images by location
 function getFilteredImages() {
 	const bekendChecked = document.getElementById("bekend").checked;
 	const onbekendChecked = document.getElementById("onbekend").checked;
@@ -104,7 +108,7 @@ function getFilteredImages() {
 	const selectedLocations = LOCATION_IDS.filter(
 		(id) => document.getElementById(id)?.checked,
 	);
-
+	// Start with the full image list and apply filters based on bekendheid, selected locations, year range, and search query
 	let filtered = images;
 	if (bekendChecked) filtered = filtered.filter((img) => img.bekend);
 	else if (onbekendChecked) filtered = filtered.filter((img) => !img.bekend);
@@ -112,7 +116,7 @@ function getFilteredImages() {
 	if (selectedLocations.length > 0) {
 		filtered = filtered.filter((img) => selectedLocations.includes(img.plaats));
 	}
-
+	// Filter images based on the specified year range, using 1920 and 2019 as defaults if inputs are empty or invalid
 	const fromYear = parseInt(document.getElementById("fromYear").value);
 	const toYear = parseInt(document.getElementById("toYear").value);
 
@@ -124,7 +128,7 @@ function getFilteredImages() {
 			return img.datum >= from && img.datum <= to;
 		});
 	}
-
+	// If a search query is present, further filter images by checking if any part of the filename (after the first part) includes the search query
 	if (searchQuery) {
 		filtered = filtered.filter((img) => {
 			const filename = img.src.split("/").pop().toLowerCase();
@@ -138,10 +142,6 @@ function getFilteredImages() {
 
 	return filtered;
 } // Returns the filtered image list based on bekendheid, selected locations, and year range
-
-let shuffled = [];
-let offset = 0;
-const CARDS_PER_MEER = 12;
 
 function loadImages() {
 	const filtered = getFilteredImages();
@@ -187,7 +187,7 @@ function renderFilterPills() {
 		});
 		container.appendChild(pill);
 	}
-
+	//
 	// Datum pill
 	const fromVal = document.getElementById("fromYear")?.value;
 	const toVal = document.getElementById("toYear")?.value;
