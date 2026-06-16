@@ -159,6 +159,77 @@ function loadImages() {
 	offset = count;
 } // Resets and renders the first batch of filtered images into the gallery
 
+function renderFilterPills() {
+	const container = document.querySelector(".top-filters");
+	if (!container) return;
+	container.innerHTML = "";
+
+	// Wijk pill
+	const selectedWijken = LOCATION_IDS.filter((id) => {
+		const cb = document.getElementById(id);
+		return cb && cb.checked;
+	});
+	if (selectedWijken.length > 0) {
+		const pill = document.createElement("div");
+		pill.classList.add("filter-pill");
+		const extra =
+			selectedWijken.length > 1
+				? ` <span class="pill-extra"> + ${selectedWijken.length - 1}</span>`
+				: "";
+		pill.innerHTML = `${selectedWijken[0]}${extra} <i class="fa-solid fa-minus pill-remove"></i>`;
+		pill.querySelector(".pill-remove").addEventListener("click", () => {
+			selectedWijken.forEach((id) => {
+				const cb = document.getElementById(id);
+				if (cb) cb.checked = false;
+			});
+			loadImages();
+			renderFilterPills();
+		});
+		container.appendChild(pill);
+	}
+
+	// Datum pill
+	const fromVal = document.getElementById("fromYear")?.value;
+	const toVal = document.getElementById("toYear")?.value;
+	if (fromVal || toVal) {
+		const pill = document.createElement("div");
+		pill.classList.add("filter-pill");
+		const label =
+			fromVal && toVal
+				? `${fromVal} – ${toVal}`
+				: fromVal
+					? `vanaf ${fromVal}`
+					: `tot ${toVal}`;
+		pill.innerHTML = `${label} <i class="fa-solid fa-minus pill-remove"></i>`;
+		pill.querySelector(".pill-remove").addEventListener("click", () => {
+			const f = document.getElementById("fromYear");
+			const t = document.getElementById("toYear");
+			if (f) f.value = "";
+			if (t) t.value = "";
+			loadImages();
+			renderFilterPills();
+		});
+		container.appendChild(pill);
+	}
+
+	// Bekend/onbekend pill
+	const bekendCb = document.getElementById("bekend");
+	const onbekendCb = document.getElementById("onbekend");
+	if (bekendCb?.checked || onbekendCb?.checked) {
+		const pill = document.createElement("div");
+		pill.classList.add("filter-pill");
+		const label = bekendCb?.checked ? "Locatie: Ja" : "Locatie: Nee";
+		pill.innerHTML = `${label} <i class="fa-solid fa-minus pill-remove"></i>`;
+		pill.querySelector(".pill-remove").addEventListener("click", () => {
+			if (bekendCb) bekendCb.checked = false;
+			if (onbekendCb) onbekendCb.checked = false;
+			loadImages();
+			renderFilterPills();
+		});
+		container.appendChild(pill);
+	}
+}
+
 document.addEventListener("DOMContentLoaded", () => {
 	const searchInput = document.getElementById("searchInput");
 	searchInput.addEventListener("input", (e) => {
@@ -207,11 +278,13 @@ document.addEventListener("DOMContentLoaded", () => {
 	bekendCb.addEventListener("change", () => {
 		if (bekendCb.checked) uncheckOnbekend();
 		loadImages();
+		renderFilterPills();
 	});
 
 	onbekendCb.addEventListener("change", () => {
 		if (onbekendCb.checked) clearOtherFilters();
 		loadImages();
+		renderFilterPills();
 	});
 
 	LOCATION_IDS.forEach((id) => {
@@ -220,6 +293,7 @@ document.addEventListener("DOMContentLoaded", () => {
 			cb.addEventListener("change", () => {
 				if (cb.checked) uncheckOnbekend();
 				loadImages();
+				renderFilterPills();
 			});
 	});
 
@@ -229,10 +303,12 @@ document.addEventListener("DOMContentLoaded", () => {
 		fromInput.addEventListener("input", () => {
 			if (fromInput.value) uncheckOnbekend();
 			loadImages();
+			renderFilterPills();
 		});
 	if (toInput)
 		toInput.addEventListener("input", () => {
 			if (toInput.value) uncheckOnbekend();
 			loadImages();
+			renderFilterPills();
 		});
 }); // Sets up the load-more button and checkbox filter interactions on page load
