@@ -71,8 +71,20 @@
 	color: #111;
 	font-size: 1rem;
 }
-.panel label input {
-	accent-color: #3fc02b;
+.panel label input[type="checkbox"] {
+	appearance: none;
+	-webkit-appearance: none;
+	width: 16px;
+	height: 16px;
+	min-width: 16px;
+	border-radius: 50%;
+	background: #ccc;
+	border: none;
+	cursor: pointer;
+	transition: background 0.2s ease;
+}
+.panel label input[type="checkbox"]:checked {
+	background: #3fc02b;
 }
 .date-inputs {
 	display: flex;
