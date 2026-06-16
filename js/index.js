@@ -153,11 +153,22 @@ function loadImages() {
 	for (let i = 0; i < count; i++) {
 		const card = document.createElement("div");
 		card.classList.add("card");
-		card.innerHTML = `<img src="${shuffled[i].src}" alt="Beeldenbank foto" style="width:100%;height:100%;object-fit:cover;display:block;">`;
+		card.innerHTML = `<img src="${shuffled[i].src}" alt="Beeldenbank foto" style="width:100%;height:100%;object-fit:cover;display:block;cursor:pointer;">`;
+		card.querySelector("img").addEventListener("click", () => openModal(shuffled[i].src));
 		gallery.appendChild(card);
 	}
 	offset = count;
 } // Resets and renders the first batch of filtered images into the gallery
+
+function openModal(src) {
+	const modal = document.getElementById("img-modal");
+	const modalImg = document.getElementById("img-modal-img");
+	const modalName = document.getElementById("img-modal-name");
+	modalImg.src = src;
+	modalImg.alt = src.split("/").pop();
+	modalName.textContent = src.split("/").pop().replace(/\.[^/.]+$/, "");
+	modal.style.display = "flex";
+}
 
 function renderFilterPills() {
 	const container = document.querySelector(".top-filters");
@@ -249,12 +260,21 @@ document.addEventListener("DOMContentLoaded", () => {
 		for (let i = 0; i < count; i++) {
 			const card = document.createElement("div");
 			card.classList.add("card");
-			card.innerHTML = `<img src="${shuffled[offset + i].src}" alt="Beeldenbank foto" style="width:100%;height:100%;object-fit:cover;display:block;">`;
+			card.innerHTML = `<img src="${shuffled[offset + i].src}" alt="Beeldenbank foto" style="width:100%;height:100%;object-fit:cover;display:block;cursor:pointer;">`;
+			(function(imgData) {
+				card.querySelector("img").addEventListener("click", () => openModal(imgData.src));
+			})(shuffled[offset + i]);
 			gallery.appendChild(card);
 		}
 		offset += count;
 		if (offset >= shuffled.length) meerBtn.style.display = "none";
 	});
+
+	const modal = document.getElementById("img-modal");
+	const modalClose = document.getElementById("img-modal-close");
+	modalClose.addEventListener("click", () => { modal.style.display = "none"; });
+	modal.addEventListener("click", (e) => { if (e.target === modal) modal.style.display = "none"; });
+	document.addEventListener("keydown", (e) => { if (e.key === "Escape") modal.style.display = "none"; });
 
 	const bekendCb = document.getElementById("bekend");
 	const onbekendCb = document.getElementById("onbekend");
