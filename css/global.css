@@ -22,6 +22,9 @@ body {
 	transition: opacity 1.5s ease-in-out;
 	opacity: 0;
 }
+.bg-slide-overlay {
+	background-color: red;
+}
 
 .bg-slide.active {
 	opacity: 1;

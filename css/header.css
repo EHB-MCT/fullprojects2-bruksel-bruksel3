@@ -52,6 +52,14 @@ header {
 	font-size: 1.6rem;
 	color: #fff;
 }
+.title3 h1 {
+	font-family: "Inter", sans-serif;
+	font-size: 48px;
+}
+.title3 p {
+	font-family: "Inter", sans-serif;
+	font-size: 16px;
+}
 .header-actions {
 	position: absolute;
 	right: 24px;
