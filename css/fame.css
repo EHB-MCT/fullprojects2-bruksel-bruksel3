@@ -3,12 +3,6 @@
 	--subtitle-font: "Arial", serif;
 }
 
-.wof-spacer {
-	margin-top: 80px;
-	height: 58px;
-	margin-bottom: 80px;
-}
-
 .wall-of-fame {
 	width: 100%;
 	text-align: center;
@@ -22,7 +16,19 @@
 	font-weight: bold;
 	margin-bottom: 3rem;
 }
-
+.hero-button {
+	background: #3fc02b;
+	color: #fff;
+	padding: 10px;
+	position: relative;
+	right: 5px;
+	top: 10px;
+	border-radius: 15px;
+	font-family: "Inter", sans-serif;
+}
+.wof-spacer {
+	padding-top: 100px;
+}
 /* Container */
 .project-boxes {
 	display: flex;
