@@ -25,6 +25,8 @@
 	top: 10px;
 	border-radius: 15px;
 	font-family: "Inter", sans-serif;
+	border: none;
+	cursor: pointer;
 }
 .wof-spacer {
 	padding-top: 100px;
