@@ -1,10 +1,181 @@
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/color.css" />
+    <link rel="stylesheet" href="css/font.css" />
+    <link rel="stylesheet" href="css/global.css" />
+    <link rel="stylesheet" href="css/header.css" />
+    <link rel="stylesheet" href="css/sidebar.css" />
+    <link rel="stylesheet" href="css/over-ons.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+    />
+    <link
+      rel="icon"
+      type="image/x-icon"
+      sizes="32x32"
+      href="assets/favicon/logo_32x32.ico"
+    />
+    <link
+      rel="icon"
+      type="image/x-icon"
+      sizes="16x16"
+      href="assets/favicon/logo_16x16.ico"
+    />
+    <link rel="shortcut icon" href="assets/favicon/logo_32x32.ico" />
     <title>Over ons</title>
-</head>
-<body>
-    
-</body>
+  </head>
+  <body>
+    <header>
+      <div class="header-inner">
+        <a href="index.html"
+          ><img src="assets/logo_high res.png" alt="logo" class="logo"
+        /></a>
+        <a href="index.html"><h2 class="title1 active">BEELDENBANK</h2></a>
+        <a href="wall-of-fame.html"><h2 class="title2">WALL OF FAME</h2></a>
+        <div class="header-actions">
+          <a href="over-ons.html" class="icon-button" aria-label="info"
+            ><i class="fa-solid fa-circle-info"></i
+          ></a>
+          <a href="#" class="icon-button" aria-label="links"
+            ><i class="fa-solid fa-link"></i
+          ></a>
+        </div>
+      </div>
+    </header>
+    <div class="hero-over-ons">
+      <div class="hero-h1-over-ons"><h1>OVER ONS</h1></div>
+      </div>
+    </div>
+    <div class="background"></div>
+    <!-- Image popup modal -->
+    <div
+      id="img-modal"
+      style="
+        display: none;
+        position: fixed;
+        inset: 0;
+        z-index: 1000;
+        background: rgba(0, 0, 0, 0.55);
+        justify-content: center;
+        align-items: flex-start;
+        padding-top: 60px;
+      "
+    >
+      <div
+        style="
+          background: #fff;
+          border-radius: 16px;
+          max-width: 700px;
+          width: 90%;
+          padding: 32px 32px 28px;
+          position: relative;
+        "
+      >
+        <button
+          id="img-modal-close"
+          aria-label="Sluiten"
+          style="
+            position: absolute;
+            top: 14px;
+            right: 18px;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            line-height: 1;
+          "
+        >
+          &times;
+        </button>
+        <img
+          id="img-modal-img"
+          src=""
+          alt=""
+          style="
+            width: 100%;
+            max-height: 60vh;
+            object-fit: contain;
+            display: block;
+            border-radius: 8px;
+          "
+        />
+        <p
+          id="img-modal-name"
+          style="
+            margin-top: 14px;
+            font-size: 1rem;
+            text-align: center;
+            word-break: break-word;
+          "
+        ></p>
+      </div>
+    </div>
+    <div class="stats-row">
+      <div class="stat-card">
+        <div class="stat-number">50</div>
+        <div class="stat-label">JAAR VERZAMELEN</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">10.000</div>
+        <div class="stat-label">BEELDEN</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">3</div>
+        <div class="stat-label">WIJKEN EXTRA IN DE KIJKER</div>
+      </div>
+    </div>
+
+    <div class="text-section">
+        <h2>DE BRUKSELBEELDENBANK</h2>
+        <br>
+        <p>Brukselbinnenstebuiten vierde in 2021 haar vijftigste verjaardag. In die halve eeuw maakten
+        en verzamelden onze gidsen duizenden beelden van Brussel: foto’s, dia’s, oude kaarten,
+        wijkplannen.... 
+        <br>
+        <br>
+
+        Omdat Brukselbinnenstebuiten altijd een geëngageerde gidsenorganisatie is geweest,
+        werden de beelden niet gemaakt of geselecteerd vanuit een toeristisch oogpunt. 
+        <br>
+        Het was vooral de bedoeling om de veranderende stad in beeld te brengen, en soms ook
+        om het verdwijnen van erfgoed of andere stedenbouwkundige problemen aan te kaarten.
+        Denk bijvoorbeeld aan de verkrotting door bouwpromotoren in de Leopoldwijk in de jaren
+        1980. Sommige beelden zijn zeer zeldzame tijdsdocumenten. 
+        <br>
+        <br>
+        Deze ‘Brukselbeeldenbank’ vormt een unieke collectie die op heel uiteenlopende manieren
+        kan worden ontsloten, zowel voor een publiek van kenners als van geïnteresseerde
+        leken.  Sinds 2019 werden meer dan 10.000 oude dia’s en foto’s geïdentificeerd, ingescand
+        en digitaal bewaard, ingedeeld per wijk. </p>
+        <br>
+        <br>
+        <br>
+        <br>
+        <h2>CONTACT</h2>
+        <br>
+        <p>Brukselbinnenstebuiten, Hopstraat 47 (1), 1000 Brussel (België) 
+        <br>
+        <br>
+        +00 32 2 218 38 78
+        <br>
+        <br>
+        onthaal@bruskelbinnenstebuiten.be
+        </p>
+    </div>
+    <div class="social-buttons">
+          <a href="#" class="icon-button-social" aria-label="social"
+            ><i class="fa-solid fa-circle-info"></i
+          ></a>
+          <a href="#" class="icon-button-social" aria-label="social"
+            ><i class="fa-solid fa-circle-info"></i
+          ></a>
+          <a href="#" class="icon-button-social" aria-label="social"
+            ><i class="fa-solid fa-circle-info"></i
+          ></a>
+    </div>
+    <script src="js/index.js"></script>
+  </body>
 </html>
