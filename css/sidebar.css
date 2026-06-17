@@ -16,10 +16,17 @@
 .background {
 	position: absolute;
 	width: 100%;
-	height: 300%;
+	height: 100%;
 	background-color: #fff;
 	z-index: -1;
 	margin-top: 35px;
+}
+.background_linkPage {
+	position: absolute;
+	width: 100%;
+	height: 1200px;
+	background-color: #fff;
+	z-index: -1;
 }
 .search-box {
 	position: relative;
