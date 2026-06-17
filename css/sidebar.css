@@ -157,10 +157,11 @@
 	box-shadow: 0 25px 45px rgba(0, 0, 0, 0.16);
 }
 .fa-xmark {
-	margin-left: 12px;
+	margin-right: 6px;
+	color: #fff;
 }
 .fa-xmark:hover {
-	color: #3fc02b96;
+	color: rgba(255, 255, 255, 0.7);
 }
 #Noordwijk {
 	border-radius: 50%;

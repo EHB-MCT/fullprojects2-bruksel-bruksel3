@@ -204,7 +204,7 @@ function renderFilterPills() {
 			selectedWijken.length > 1
 				? ` <span class="pill-extra"> + ${selectedWijken.length - 1}</span>`
 				: "";
-		pill.innerHTML = `${selectedWijken[0]}${extra} <i class="fa-solid fa-minus pill-remove"></i>`;
+		pill.innerHTML = `<i class="fa-solid fa-xmark pill-remove"></i> ${selectedWijken[0]}${extra}`;
 		pill.querySelector(".pill-remove").addEventListener("click", () => {
 			selectedWijken.forEach((id) => {
 				const cb = document.getElementById(id);
@@ -228,7 +228,7 @@ function renderFilterPills() {
 				: fromVal
 					? `vanaf ${fromVal}`
 					: `tot ${toVal}`;
-		pill.innerHTML = `${label} <i class="fa-solid fa-minus pill-remove"></i>`;
+		pill.innerHTML = `<i class="fa-solid fa-xmark pill-remove"></i> ${label}`;
 		pill.querySelector(".pill-remove").addEventListener("click", () => {
 			const f = document.getElementById("fromYear");
 			const t = document.getElementById("toYear");
@@ -247,7 +247,7 @@ function renderFilterPills() {
 		const pill = document.createElement("div");
 		pill.classList.add("filter-pill");
 		const label = bekendCb?.checked ? "Locatie: Ja" : "Locatie: Nee";
-		pill.innerHTML = `${label} <i class="fa-solid fa-minus pill-remove"></i>`;
+		pill.innerHTML = `<i class="fa-solid fa-xmark pill-remove"></i> ${label}`;
 		pill.querySelector(".pill-remove").addEventListener("click", () => {
 			if (bekendCb) bekendCb.checked = false;
 			if (onbekendCb) onbekendCb.checked = false;
