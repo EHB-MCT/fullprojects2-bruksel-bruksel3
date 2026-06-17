@@ -154,7 +154,9 @@ function loadImages() {
 		const card = document.createElement("div");
 		card.classList.add("card");
 		card.innerHTML = `<img src="${shuffled[i].src}" alt="Beeldenbank foto" style="width:100%;height:100%;object-fit:cover;display:block;cursor:pointer;">`;
-		card.querySelector("img").addEventListener("click", () => openModal(shuffled[i].src));
+		card
+			.querySelector("img")
+			.addEventListener("click", () => openModal(shuffled[i].src));
 		gallery.appendChild(card);
 	}
 	offset = count;
@@ -166,7 +168,10 @@ function openModal(src) {
 	const modalName = document.getElementById("img-modal-name");
 	const downloadBtn = document.getElementById("img-modal-download");
 	const shareBtn = document.getElementById("img-modal-share");
-	const name = src.split("/").pop().replace(/\.[^/.]+$/, "");
+	const name = src
+		.split("/")
+		.pop()
+		.replace(/\.[^/.]+$/, "");
 	modalImg.src = src;
 	modalImg.alt = name;
 	modalName.textContent = name;
@@ -176,12 +181,15 @@ function openModal(src) {
 		if (navigator.share) {
 			navigator.share({ title: name, url: window.location.origin + "/" + src });
 		} else {
-			navigator.clipboard.writeText(window.location.origin + "/" + src).then(() => {
-				shareBtn.textContent = "Link gekopieerd!";
-				setTimeout(() => {
-					shareBtn.innerHTML = '<i class="fa-solid fa-share-nodes"></i> Delen';
-				}, 2000);
-			});
+			navigator.clipboard
+				.writeText(window.location.origin + "/" + src)
+				.then(() => {
+					shareBtn.textContent = "Link gekopieerd!";
+					setTimeout(() => {
+						shareBtn.innerHTML =
+							'<i class="fa-solid fa-share-nodes"></i> Delen';
+					}, 2000);
+				});
 		}
 	};
 	modal.style.display = "flex";
@@ -278,8 +286,10 @@ document.addEventListener("DOMContentLoaded", () => {
 			const card = document.createElement("div");
 			card.classList.add("card");
 			card.innerHTML = `<img src="${shuffled[offset + i].src}" alt="Beeldenbank foto" style="width:100%;height:100%;object-fit:cover;display:block;cursor:pointer;">`;
-			(function(imgData) {
-				card.querySelector("img").addEventListener("click", () => openModal(imgData.src));
+			(function (imgData) {
+				card
+					.querySelector("img")
+					.addEventListener("click", () => openModal(imgData.src));
 			})(shuffled[offset + i]);
 			gallery.appendChild(card);
 		}
@@ -289,9 +299,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
 	const modal = document.getElementById("img-modal");
 	const modalClose = document.getElementById("img-modal-close");
-	modalClose.addEventListener("click", () => { modal.style.display = "none"; });
-	modal.addEventListener("click", (e) => { if (e.target === modal) modal.style.display = "none"; });
-	document.addEventListener("keydown", (e) => { if (e.key === "Escape") modal.style.display = "none"; });
+	modalClose.addEventListener("click", () => {
+		modal.style.display = "none";
+	});
+	modal.addEventListener("click", (e) => {
+		if (e.target === modal) modal.style.display = "none";
+	});
+	document.addEventListener("keydown", (e) => {
+		if (e.key === "Escape") modal.style.display = "none";
+	});
 
 	const bekendCb = document.getElementById("bekend");
 	const onbekendCb = document.getElementById("onbekend");
