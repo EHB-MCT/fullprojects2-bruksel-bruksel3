@@ -21,13 +21,7 @@
 	z-index: -1;
 	margin-top: 35px;
 }
-.background_linkPage {
-	position: absolute;
-	width: 100%;
-	height: 1200px;
-	background-color: #fff;
-	z-index: -1;
-}
+
 .search-box {
 	position: relative;
 	margin-bottom: 32px;
@@ -196,4 +190,107 @@
 	left: 17px;
 	font-size: 17px;
 	font-weight: bold;
+}
+
+#img-modal {
+	display: none;
+	position: fixed;
+	inset: 0;
+	z-index: 1000;
+	background: rgba(0, 0, 0, 0.55);
+	justify-content: center;
+	align-items: flex-start;
+	padding-top: 60px;
+}
+#img-modal-prev,
+#img-modal-next {
+	position: fixed;
+	top: 50%;
+	transform: translateY(-50%);
+	background: #3fc02b;
+	border: none;
+	border-radius: 50%;
+	width: 48px;
+	height: 48px;
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
+}
+#img-modal-prev {
+	left: 24px;
+}
+#img-modal-next {
+	right: 24px;
+}
+.img-modal-box {
+	background: #fff;
+	border-radius: 20px;
+	max-width: 980px;
+	width: 92%;
+	padding: 44px 44px 36px;
+	position: relative;
+}
+#img-modal-close {
+	position: absolute;
+	top: 14px;
+	right: 14px;
+	background: #3fc02b;
+	border: none;
+	border-radius: 50%;
+	width: 32px;
+	height: 32px;
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+#img-modal-img {
+	width: 88%;
+	max-height: 65vh;
+	object-fit: contain;
+	display: block;
+	border-radius: 14px;
+	margin: 0 auto;
+}
+#img-modal-name {
+	margin-top: 12px;
+	font-size: 0.95rem;
+	text-align: center;
+	word-break: break-word;
+	color: #333;
+}
+.img-modal-actions {
+	display: flex;
+	justify-content: center;
+	gap: 12px;
+	margin-top: 14px;
+}
+#img-modal-download {
+	display: inline-flex;
+	align-items: center;
+	gap: 7px;
+	padding: 9px 20px;
+	background: #3fc02b;
+	color: #fff;
+	border-radius: 999px;
+	text-decoration: none;
+	font-size: 0.9rem;
+	font-weight: 600;
+	box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
+}
+#img-modal-share {
+	display: inline-flex;
+	align-items: center;
+	gap: 7px;
+	padding: 9px 20px;
+	background: #3fc02b;
+	color: #fff;
+	border: none;
+	border-radius: 999px;
+	font-size: 0.9rem;
+	font-weight: 600;
+	cursor: pointer;
+	box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
 }
