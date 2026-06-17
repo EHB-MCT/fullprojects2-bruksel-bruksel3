@@ -82,12 +82,12 @@
 					<div class="project-info">
 						<div class="project-avatar"><i class="fa-solid fa-user"></i></div>
 						<div class="project-meta">
-							<span class="project-name">Project Two</span>
+							<span class="project-name">John Doe</span>
 							<span class="project-role">Rol / functie</span>
 						</div>
 					</div>
 					<p class="project-description">
-						Lorem ipsum dolor sit amet consectetur adipisicing elit.
+						Heeft dit beeld gebruikt voor zijn eindjaarproject als inspiratie.
 					</p>
 				</div>
 
@@ -96,16 +96,70 @@
 					<div class="project-info">
 						<div class="project-avatar"><i class="fa-solid fa-user"></i></div>
 						<div class="project-meta">
-							<span class="project-name">Project Three</span>
+							<span class="project-name">John Doe</span>
 							<span class="project-role">Rol / functie</span>
 						</div>
 					</div>
 					<p class="project-description">
-						Lorem ipsum dolor sit amet consectetur adipisicing elit.
+						Heeft dit beeld gebruikt voor zijn eindjaarproject als inspiratie.
 					</p>
 				</div>
 			</div>
 		</section>
+
+		<!-- Popup Modal -->
+		<div id="projectModal" class="modal">
+			<div class="modal-content">
+				<span class="close-modal">&times;</span>
+
+				<div class="modal-body">
+					<!-- Left Side -->
+					<div class="form-section">
+						<div class="form-row two-columns">
+							<input type="text" placeholder="Voornaam" />
+							<input type="text" placeholder="Achternaam" />
+						</div>
+
+						<div class="form-row two-columns">
+							<input type="date" />
+
+							<select>
+								<option value="">Geslacht</option>
+								<option>Man</option>
+								<option>Vrouw</option>
+							</select>
+						</div>
+
+						<div class="form-row">
+							<input type="email" placeholder="E-mailadres" />
+						</div>
+
+						<div class="form-row">
+							<input type="tel" placeholder="Telefoonnummer" />
+						</div>
+
+						<div class="form-row">
+							<input type="text" placeholder="Where can we see your work?" />
+						</div>
+
+						<div class="form-row">
+							<textarea placeholder="How did you use our picture?"></textarea>
+						</div>
+					</div>
+
+					<!-- Right Side -->
+					<div class="upload-section">
+						<label for="imageUpload" class="upload-box">
+							<span class="upload-text">Attach picture</span>
+							<img id="previewImage" src="" alt="" />
+						</label>
+						<input type="file" id="imageUpload" accept="image/*" hidden />
+					</div>
+				</div>
+
+				<button class="share-btn">Share</button>
+			</div>
+		</div>
 		<script>
 			(function () {
 				const bgs = [
@@ -131,5 +185,6 @@
 				}, 5000);
 			})();
 		</script>
+		<script src="js/index.js"></script>
 	</body>
 </html>

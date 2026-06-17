@@ -319,12 +319,17 @@ document.addEventListener("DOMContentLoaded", () => {
 		if (e.key === "ArrowRight") navigateModal(1);
 	});
 
-	document.getElementById("img-modal-prev").addEventListener("click", () => navigateModal(-1));
-	document.getElementById("img-modal-next").addEventListener("click", () => navigateModal(1));
+	document
+		.getElementById("img-modal-prev")
+		.addEventListener("click", () => navigateModal(-1));
+	document
+		.getElementById("img-modal-next")
+		.addEventListener("click", () => navigateModal(1));
 
 	function navigateModal(direction) {
 		if (!shuffled.length) return;
-		currentModalIndex = (currentModalIndex + direction + shuffled.length) % shuffled.length;
+		currentModalIndex =
+			(currentModalIndex + direction + shuffled.length) % shuffled.length;
 		_renderModal(shuffled[currentModalIndex].src);
 	}
 
@@ -384,3 +389,55 @@ document.addEventListener("DOMContentLoaded", () => {
 			renderFilterPills();
 		});
 }); // Sets up the load-more button and checkbox filter interactions on page load
+
+//Deel je project nu (form to fill in regarding the project that user wants to share with us)
+document.addEventListener("DOMContentLoaded", () => {
+	const projectModal = document.getElementById("projectModal");
+	const openBtn = document.querySelector(".hero-button");
+	const closeBtn = document.querySelector(".close-modal");
+
+	// OPEN MODAL
+	if (openBtn && projectModal) {
+		openBtn.addEventListener("click", () => {
+			projectModal.style.display = "flex";
+		});
+	}
+
+	// CLOSE MODAL
+	if (closeBtn && projectModal) {
+		closeBtn.addEventListener("click", () => {
+			projectModal.style.display = "none";
+		});
+	}
+
+	// CLICK OUTSIDE TO CLOSE
+	window.addEventListener("click", (e) => {
+		if (e.target === projectModal) {
+			projectModal.style.display = "none";
+		}
+	});
+
+	// IMAGE PREVIEW
+	const imageUpload = document.getElementById("imageUpload");
+	const previewImage = document.getElementById("previewImage");
+	const uploadText = document.querySelector(".upload-text");
+
+	if (imageUpload) {
+		imageUpload.addEventListener("change", function () {
+			const file = this.files[0];
+			if (!file) return;
+
+			const reader = new FileReader();
+
+			reader.onload = function (e) {
+				if (previewImage) {
+					previewImage.src = e.target.result;
+					previewImage.style.display = "block";
+				}
+				if (uploadText) uploadText.style.display = "none";
+			};
+
+			reader.readAsDataURL(file);
+		});
+	}
+});
