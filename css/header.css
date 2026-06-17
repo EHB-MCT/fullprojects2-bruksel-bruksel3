@@ -8,10 +8,6 @@ header {
 	margin-bottom: 20px;
 }
 
-header.green{
-	background: #4ec02a;
-}
-
 .header-inner {
 	position: relative;
 	width: 100%;
