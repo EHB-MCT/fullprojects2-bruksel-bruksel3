@@ -20,7 +20,7 @@
   <body>
     <header>
       <div class="header-inner">
-        <a href="https://www.brukselbinnenstebuiten.be"
+        <a href="index.html"
           ><img src="assets/logo_high res.png" alt="logo" class="logo"
         /></a>
         <a href="index.html"><h2 class="title1 active">BEELDENBANK</h2></a>
@@ -35,9 +35,12 @@
         </div>
       </div>
     </header>
-    <div class="title3"><h1>GEEF BRUSSEL EEN NIEUWE BLIK</h1></div>
-    <div class="title3"><p>Ontdek een veelzijdige collectie foto's, affiches, documenten en ander beeldmateriaal. 
+    <div class="hero">
+      <div class="hero-h1"><h1>GEEF BRUSSEL EEN NIEUWE BLIK</h1></div>
+      <div class="hero-p"><p>Ontdek een veelzijdige collectie foto's, affiches, documenten en ander beeldmateriaal. 
       Laat je inspireren door de verhalen van de hoofdstad en gebruik ze in jouw eigen projecten.</p></div>
+    </div>
+    
     <div class="background"></div>
     <div class="container">
       <aside class="sidebar">
@@ -46,7 +49,7 @@
           <datalist id="suggestions"></datalist>
         </div>
         <div class="panel">
-          <h1>Wijk</h1>
+          <h1>Gemeente</h1>
           <label><input type="checkbox" id="Anderlecht" name="Anderlecht" value="Anderlecht" /> Anderlecht</label>
           <label><input type="checkbox" id="Brussel" name="Brussel" value="Brussel" /> Brussel</label>
           <label><input type="checkbox" id="Elsene" name="Elsene" value="Elsene" /> Elsene</label>
@@ -116,6 +119,24 @@
           <div class="card"></div>
         </div>
       </main>
+    </div>
+    <!-- Image popup modal -->
+    <div id="img-modal" style="display:none;position:fixed;inset:0;z-index:1000;background:rgba(0,0,0,0.55);justify-content:center;align-items:flex-start;padding-top:60px;">
+      <div style="background:#fff;border-radius:20px;max-width:980px;width:92%;padding:44px 44px 36px;position:relative;">
+        <button id="img-modal-close" aria-label="Sluiten" style="position:absolute;top:14px;right:14px;background:#3fc02b;border:none;border-radius:50%;width:32px;height:32px;cursor:pointer;display:flex;align-items:center;justify-content:center;">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none"><line x1="1" y1="1" x2="13" y2="13" stroke="white" stroke-width="2.2" stroke-linecap="round"/><line x1="13" y1="1" x2="1" y2="13" stroke="white" stroke-width="2.2" stroke-linecap="round"/></svg>
+        </button>
+        <img id="img-modal-img" src="" alt="" style="width:88%;max-height:65vh;object-fit:contain;display:block;border-radius:14px;margin:0 auto;" />
+        <p id="img-modal-name" style="margin-top:12px;font-size:0.95rem;text-align:center;word-break:break-word;color:#333;"></p>
+        <div style="display:flex;justify-content:center;gap:12px;margin-top:14px;">
+          <a id="img-modal-download" href="" download style="display:inline-flex;align-items:center;gap:7px;padding:9px 20px;background:#3fc02b;color:#fff;border-radius:999px;text-decoration:none;font-size:0.9rem;font-weight:600;box-shadow:0 4px 14px rgba(0,0,0,0.12);">
+            <i class="fa-solid fa-download"></i> Download
+          </a>
+          <button id="img-modal-share" style="display:inline-flex;align-items:center;gap:7px;padding:9px 20px;background:#3fc02b;color:#fff;border:none;border-radius:999px;font-size:0.9rem;font-weight:600;cursor:pointer;box-shadow:0 4px 14px rgba(0,0,0,0.12);">
+            <i class="fa-solid fa-share-nodes"></i> Delen
+          </button>
+        </div>
+      </div>
     </div>
     <script src="js/index.js"></script>
   </body>
