@@ -48,7 +48,6 @@
 	border-radius: 15px;
 	overflow: hidden;
 	box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-	border: 1px solid #000000;
 }
 
 /* Image */
@@ -86,8 +85,6 @@
 	font-size: 1rem;
 	font-weight: 700;
 	color: #111;
-	position: relative;
-	right: 16px;
 }
 .project-role {
 	font-size: 0.85rem;
