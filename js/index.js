@@ -164,9 +164,26 @@ function openModal(src) {
 	const modal = document.getElementById("img-modal");
 	const modalImg = document.getElementById("img-modal-img");
 	const modalName = document.getElementById("img-modal-name");
+	const downloadBtn = document.getElementById("img-modal-download");
+	const shareBtn = document.getElementById("img-modal-share");
+	const name = src.split("/").pop().replace(/\.[^/.]+$/, "");
 	modalImg.src = src;
-	modalImg.alt = src.split("/").pop();
-	modalName.textContent = src.split("/").pop().replace(/\.[^/.]+$/, "");
+	modalImg.alt = name;
+	modalName.textContent = name;
+	downloadBtn.href = src;
+	downloadBtn.download = src.split("/").pop();
+	shareBtn.onclick = () => {
+		if (navigator.share) {
+			navigator.share({ title: name, url: window.location.origin + "/" + src });
+		} else {
+			navigator.clipboard.writeText(window.location.origin + "/" + src).then(() => {
+				shareBtn.textContent = "Link gekopieerd!";
+				setTimeout(() => {
+					shareBtn.innerHTML = '<i class="fa-solid fa-share-nodes"></i> Delen';
+				}, 2000);
+			});
+		}
+	};
 	modal.style.display = "flex";
 }
 
