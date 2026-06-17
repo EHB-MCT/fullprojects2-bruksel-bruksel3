@@ -218,6 +218,11 @@
 	justify-content: center;
 	box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
 }
+#img-modal-prev i,
+#img-modal-next i {
+	color: #fff;
+}
+
 #img-modal-prev {
 	left: 24px;
 }
@@ -246,6 +251,12 @@
 	align-items: center;
 	justify-content: center;
 }
+#img-modal-close i {
+	position: relative;
+	left: 3px;
+	top: 1px;
+}
+
 #img-modal-img {
 	width: 88%;
 	max-height: 65vh;
@@ -280,6 +291,11 @@
 	font-weight: 600;
 	box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
 }
+#img-modal-download:hover {
+	color: #3fc02b;
+	background: #fff;
+	border: 1px solid #3fc02b;
+}
 #img-modal-share {
 	display: inline-flex;
 	align-items: center;
@@ -293,4 +309,9 @@
 	font-weight: 600;
 	cursor: pointer;
 	box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
+}
+#img-modal-share:hover {
+	color: #3fc02b;
+	background: #fff;
+	border: 1px solid #3fc02b;
 }
