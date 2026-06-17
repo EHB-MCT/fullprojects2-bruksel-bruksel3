@@ -162,7 +162,14 @@ function loadImages() {
 	offset = count;
 } // Resets and renders the first batch of filtered images into the gallery
 
+let currentModalIndex = 0; // Tracks which image is open in the modal
+
 function openModal(src) {
+	currentModalIndex = shuffled.findIndex((img) => img.src === src);
+	_renderModal(src);
+}
+
+function _renderModal(src) {
 	const modal = document.getElementById("img-modal");
 	const modalImg = document.getElementById("img-modal-img");
 	const modalName = document.getElementById("img-modal-name");
@@ -306,8 +313,20 @@ document.addEventListener("DOMContentLoaded", () => {
 		if (e.target === modal) modal.style.display = "none";
 	});
 	document.addEventListener("keydown", (e) => {
+		if (modal.style.display === "none") return;
 		if (e.key === "Escape") modal.style.display = "none";
+		if (e.key === "ArrowLeft") navigateModal(-1);
+		if (e.key === "ArrowRight") navigateModal(1);
 	});
+
+	document.getElementById("img-modal-prev").addEventListener("click", () => navigateModal(-1));
+	document.getElementById("img-modal-next").addEventListener("click", () => navigateModal(1));
+
+	function navigateModal(direction) {
+		if (!shuffled.length) return;
+		currentModalIndex = (currentModalIndex + direction + shuffled.length) % shuffled.length;
+		_renderModal(shuffled[currentModalIndex].src);
+	}
 
 	const bekendCb = document.getElementById("bekend");
 	const onbekendCb = document.getElementById("onbekend");
