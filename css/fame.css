@@ -3,6 +3,11 @@
 	--subtitle-font: "Arial", serif;
 }
 
+/* Push white background lower on wall-of-fame */
+.background {
+	margin-top: 200px;
+}
+
 .wall-of-fame {
 	width: 100%;
 	text-align: center;
@@ -51,7 +56,7 @@
 .project-box {
 	flex: 1 1 300px;
 	max-width: 380px;
-	min-height: 480px;
+	min-height: 400px;
 	height: auto;
 	background-color: white;
 	border-radius: 15px;

@@ -22,20 +22,19 @@
 }
 
 .hero-link {
-	width: 50%;
-	left: 45%;
-	height: 250px;
+	width: 100%;
+	left: 0;
+	height: 350px;
 	position: relative;
-	padding-top: 90px;
-	padding-bottom: 30px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 	color: #fff;
-	background-size: cover;
-	background-position: center;
-	background-repeat: no-repeat;
 }
 .hero-h1-link h1 {
 	font-family: "Inter", sans-serif;
 	font-size: 50px;
+	text-align: center;
 }
 .background_linkPage {
 	position: absolute;
