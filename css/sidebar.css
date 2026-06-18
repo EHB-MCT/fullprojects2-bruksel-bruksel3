@@ -182,7 +182,10 @@
 	transition: background 0.2s;
 }
 .meer-btn:hover {
-	background: #32a023;
+	/* background: #32a023; */
+	border: 1px solid #3fc02b;
+	background: #fff;
+	color: #3fc02b;
 }
 .fa-magnifying-glass {
 	position: relative;

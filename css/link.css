@@ -14,6 +14,13 @@
 	margin-top: 20px;
 	margin-bottom: 60px;
 }
+
+.icon-button-links:hover{
+	border: 1px solid #3fc02b;
+	background: #fff;
+	color: #3fc02b;
+}
+
 .hero-link {
 	width: 50%;
 	left: 45%;

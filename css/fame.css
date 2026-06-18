@@ -28,6 +28,13 @@
 	border: none;
 	cursor: pointer;
 }
+
+.hero-button:hover{
+	border: 1px solid #3fc02b;
+	background: #fff;
+	color: #3fc02b;
+}
+
 .wof-spacer {
 	padding-top: 100px;
 }
