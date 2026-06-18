@@ -146,9 +146,6 @@
     </div>
     <!-- Image popup modal -->
     <div id="img-modal">
-      <button id="img-modal-prev" aria-label="Vorige">
-        <i class="fa-solid fa-angle-left"></i>
-      </button>
       <div class="img-modal-box">
         <button id="img-modal-close" aria-label="Sluiten">
           <i class="fa-solid fa-xmark"></i>
@@ -156,17 +153,22 @@
         <img id="img-modal-img" src="" alt="" />
         <p id="img-modal-name"></p>
         <div class="img-modal-actions">
-          <a id="img-modal-download" href="" download>
-            <i class="fa-solid fa-download"></i> Download
-          </a>
-          <button id="img-modal-share">
-            <i class="fa-solid fa-share-nodes"></i> Delen
+          <button id="img-modal-prev" aria-label="Vorige">
+            <i class="fa-solid fa-angle-left"></i>
+          </button>
+          <div class="img-modal-actions-center">
+            <a id="img-modal-download" href="" download>
+              <i class="fa-solid fa-download"></i> Download
+            </a>
+            <button id="img-modal-share">
+              <i class="fa-solid fa-share-nodes"></i> Delen
+            </button>
+          </div>
+          <button id="img-modal-next" aria-label="Volgende">
+            <i class="fa-solid fa-angle-right"></i>
           </button>
         </div>
       </div>
-      <button id="img-modal-next" aria-label="Volgende">
-        <i class="fa-solid fa-angle-right"></i>
-      </button>
     </div>
     <!-- Mobile Bottom Bar -->
     <div class="mobile-bottom-bar">
