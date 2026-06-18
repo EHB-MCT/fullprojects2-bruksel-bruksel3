@@ -90,8 +90,8 @@ header {
 	color: #3fc02b;
 }
 
-.icon-button.active{
-	background:  #296f1e;
+.icon-button.active {
+	background: #296f1e;
 	color: #fff;
 }
 .logo {
@@ -107,4 +107,31 @@ header {
 }
 .buttons a {
 	text-decoration: none;
+}
+
+@media (max-width: 480px) {
+	.gallery {
+		grid-template-columns: 1fr;
+	}
+
+	.hero-h1 h1 {
+		font-size: 24px;
+	}
+
+	.sidebar {
+		padding: 15px;
+	}
+
+	.search-box input,
+	.date-inputs input {
+		font-size: 14px;
+	}
+
+	.card {
+		min-height: 220px;
+	}
+
+	.meer-btn {
+		width: 100%;
+	}
 }
