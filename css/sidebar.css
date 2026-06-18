@@ -87,6 +87,11 @@
 .panel label input[type="checkbox"]:checked {
 	background: #3fc02b;
 }
+
+.panel label input[type="checkbox"]:hover{
+	border: 3px solid #3fc02b;
+}
+
 .date-inputs {
 	display: flex;
 	gap: 14px;
