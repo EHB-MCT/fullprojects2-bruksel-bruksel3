@@ -86,3 +86,34 @@
 	background-color: #fff;
 	z-index: -1;
 }
+
+@media (max-width: 768px) {
+	.hero-over-ons {
+		width: calc(100% - 30px);
+		left: 0;
+		margin: 0 15px;
+		padding-top: 20px;
+		height: auto;
+	}
+	.hero-h1-over-ons h1 {
+		font-size: 30px;
+	}
+	.stats-row {
+		flex-direction: column;
+		align-items: center;
+		gap: 12px;
+		padding: 0 15px;
+	}
+	.stat-card {
+		width: 100%;
+		max-width: 100%;
+		bottom: 0;
+	}
+	.text-section {
+		max-width: 100%;
+		padding: 20px 15px;
+	}
+	.social-buttons {
+		margin-bottom: 30px;
+	}
+}

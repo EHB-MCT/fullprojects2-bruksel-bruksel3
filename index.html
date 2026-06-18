@@ -35,6 +35,27 @@
         </div>
       </div>
     </header>
+
+    <!-- Mobile Header -->
+    <div class="mobile-header">
+      <button class="mobile-hamburger" id="mobileMenuBtn" aria-label="Menu">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+      <a href="index.html" class="mobile-logo-wrap">
+        <img src="assets/logo_high res.png" alt="logo" class="mobile-logo" />
+      </a>
+    </div>
+
+    <!-- Mobile Menu Popup -->
+    <div id="mobileMenuPopup" class="mobile-menu-popup">
+      <a href="index.html" class="mobile-menu-link active-link">BEELDENBANK</a>
+      <a href="wall-of-fame.html" class="mobile-menu-link muted-link">WALL OF FAME</a>
+      <div class="mobile-menu-icons">
+        <a href="over-ons.html" class="icon-button" aria-label="info"><i class="fa-solid fa-circle-info"></i></a>
+        <a href="link.html" class="icon-button" aria-label="links"><i class="fa-solid fa-link"></i></a>
+      </div>
+    </div>
+    <div id="mobileMenuOverlay" class="mobile-menu-overlay"></div>
     <div class="hero">
       <div class="hero-h1"><h1>GEEF BRUSSEL EEN NIEUWE BLIK</h1></div>
       <div class="hero-p"><p>Ontdek een veelzijdige collectie foto's, affiches, documenten en ander beeldmateriaal. 
@@ -147,6 +168,95 @@
         <i class="fa-solid fa-angle-right"></i>
       </button>
     </div>
+    <!-- Mobile Bottom Bar -->
+    <div class="mobile-bottom-bar">
+      <button class="mobile-filter-btn" id="mobileFilterBtn" aria-label="Filter">
+        <i class="fa-solid fa-filter"></i>
+      </button>
+      <div class="mobile-search-wrap">
+        <i class="fa-solid fa-magnifying-glass mobile-search-icon"></i>
+        <input type="search" id="mobileSearchInput" placeholder="search" list="suggestions" autocomplete="off" />
+      </div>
+    </div>
+
+    <!-- Mobile Filter Popup -->
+    <div id="mobileFilterPopup" class="mobile-filter-popup">
+      <div class="mobile-filter-inner">
+        <button class="mobile-filter-close" id="mobileFilterClose" aria-label="Sluiten">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+        <h2 class="mobile-filter-title">Gemeente</h2>
+        <div class="mobile-filter-checks">
+          <label><input type="checkbox" data-filter-id="Anderlecht" /> Anderlecht</label>
+          <label><input type="checkbox" data-filter-id="Brussel" /> Brussel</label>
+          <label><input type="checkbox" data-filter-id="Elsene" /> Elsene</label>
+          <label><input type="checkbox" data-filter-id="Etterbeek" /> Etterbeek</label>
+          <label><input type="checkbox" data-filter-id="Evere" /> Evere</label>
+          <label><input type="checkbox" data-filter-id="Ganshoren" /> Ganshoren</label>
+          <label><input type="checkbox" data-filter-id="Jette" /> Jette</label>
+          <label><input type="checkbox" data-filter-id="Schaarbeek" /> Schaarbeek</label>
+          <label><input type="checkbox" data-filter-id="Ukkel" /> Ukkel</label>
+          <label><input type="checkbox" data-filter-id="Vorst" /> Vorst</label>
+          <label><input type="checkbox" data-filter-id="Sint-Agatha-Berchem" /> Sint-Agatha-Berchem</label>
+          <label><input type="checkbox" data-filter-id="Sint-Gillis" /> Sint-Gillis</label>
+          <label><input type="checkbox" data-filter-id="Sint-Jans-Molenbeek" /> Sint-Jans-Molenbeek</label>
+          <label><input type="checkbox" data-filter-id="Sint-Pieters-Woluwe" /> Sint-Pieters-Woluwe</label>
+          <label><input type="checkbox" data-filter-id="Sint-Lambrechts-Woluwe" /> Sint-Lambrechts-Woluwe</label>
+          <label><input type="checkbox" data-filter-id="Sint-Joost-ten-Node" /> Sint-Joost-ten-Node</label>
+          <label><input type="checkbox" data-filter-id="Watermaal-Bosvoorde" /> Watermaal-Bosvoorde</label>
+          <label><input type="checkbox" data-filter-id="Oudergem" /> Oudergem</label>
+          <label><input type="checkbox" data-filter-id="Koekelberg" /> Koekelberg</label>
+        </div>
+        <h2 class="mobile-filter-title">Datum</h2>
+        <div class="mobile-filter-dates">
+          <input type="number" id="mobileFromYear" placeholder="1920" min="1920" max="2019" />
+          <input type="number" id="mobileToYear" placeholder="2019" min="1920" max="2019" />
+        </div>
+        <h2 class="mobile-filter-title">Locatie bekend</h2>
+        <div class="mobile-filter-checks">
+          <label><input type="checkbox" data-filter-id="bekend" /> Ja</label>
+          <label><input type="checkbox" data-filter-id="onbekend" /> Nee</label>
+        </div>
+      </div>
+    </div>
+
     <script src="js/index.js"></script>
+    <script>
+      // Mobile filter popup toggle
+      const mobileFilterBtn = document.getElementById('mobileFilterBtn');
+      const mobileFilterPopup = document.getElementById('mobileFilterPopup');
+      const mobileFilterClose = document.getElementById('mobileFilterClose');
+      mobileFilterBtn.addEventListener('click', () => mobileFilterPopup.classList.add('open'));
+      mobileFilterClose.addEventListener('click', () => mobileFilterPopup.classList.remove('open'));
+
+      // Sync mobile filter checkboxes with real sidebar checkboxes
+      document.querySelectorAll('#mobileFilterPopup input[data-filter-id]').forEach(cb => {
+        cb.addEventListener('change', () => {
+          const real = document.getElementById(cb.dataset.filterId);
+          if (real) {
+            real.checked = cb.checked;
+            real.dispatchEvent(new Event('change', { bubbles: true }));
+          }
+        });
+      });
+
+      // Sync mobile date inputs
+      const mobileFrom = document.getElementById('mobileFromYear');
+      const mobileTo = document.getElementById('mobileToYear');
+      mobileFrom.addEventListener('input', () => {
+        const real = document.getElementById('fromYear');
+        if (real) { real.value = mobileFrom.value; real.dispatchEvent(new Event('input', { bubbles: true })); }
+      });
+      mobileTo.addEventListener('input', () => {
+        const real = document.getElementById('toYear');
+        if (real) { real.value = mobileTo.value; real.dispatchEvent(new Event('input', { bubbles: true })); }
+      });
+
+      // Mobile search syncs with main search
+      document.getElementById('mobileSearchInput').addEventListener('input', (e) => {
+        const main = document.getElementById('searchInput');
+        if (main) { main.value = e.target.value; main.dispatchEvent(new Event('input', { bubbles: true })); }
+      });
+    </script>
   </body>
 </html>

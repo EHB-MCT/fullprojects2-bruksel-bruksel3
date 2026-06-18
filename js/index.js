@@ -1,3 +1,26 @@
+// Mobile menu toggle — shared across all pages
+document.addEventListener('DOMContentLoaded', () => {
+	const btn = document.getElementById('mobileMenuBtn');
+	const popup = document.getElementById('mobileMenuPopup');
+	const overlay = document.getElementById('mobileMenuOverlay');
+	if (btn && popup && overlay) {
+		btn.addEventListener('click', () => {
+			const open = popup.classList.toggle('open');
+			overlay.classList.toggle('open', open);
+		});
+		overlay.addEventListener('click', () => {
+			popup.classList.remove('open');
+			overlay.classList.remove('open');
+		});
+		document.addEventListener('keydown', (e) => {
+			if (e.key === 'Escape') {
+				popup.classList.remove('open');
+				overlay.classList.remove('open');
+			}
+		});
+	}
+});
+
 let shuffled = []; // Global variable to hold the currently shuffled list of images based on filters
 let offset = 0; // Global variables to manage the shuffled image list and the current offset for loading more images
 const CARDS_PER_MEER = 12; // Number of images to load each time the "meer" button is clicked

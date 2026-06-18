@@ -44,3 +44,20 @@
 	background-color: #fff;
 	z-index: -1;
 }
+
+@media (max-width: 768px) {
+	.hero-link {
+		width: calc(100% - 30px);
+		left: 0;
+		margin: 0 15px;
+		padding-top: 20px;
+		height: auto;
+	}
+	.hero-h1-link h1 {
+		font-size: 30px;
+	}
+	.text-section {
+		max-width: 100%;
+		padding: 20px 15px;
+	}
+}

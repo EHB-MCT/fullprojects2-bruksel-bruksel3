@@ -352,6 +352,29 @@ textarea {
 
 /* Mobile */
 @media (max-width: 768px) {
+	.hero {
+		width: calc(100% - 30px);
+		left: 0;
+		margin: 0 15px;
+		padding-top: 20px;
+		height: auto;
+	}
+	.wof-spacer {
+		padding-top: 20px;
+	}
+	.wall-of-fame {
+		padding: 0 15px;
+	}
+	.project-boxes {
+		flex-direction: column;
+		align-items: center;
+	}
+	.project-box {
+		max-width: 100%;
+		width: 100%;
+		height: auto;
+	}
+
 	.modal-body {
 		flex-direction: column;
 	}
