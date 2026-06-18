@@ -29,7 +29,7 @@
 	cursor: pointer;
 }
 
-.hero-button:hover{
+.hero-button:hover {
 	border: 1px solid #3fc02b;
 	background: #fff;
 	color: #3fc02b;
@@ -231,6 +231,125 @@ textarea {
 	opacity: 0.85;
 }
 
+/* Card hover like beeldenbank */
+.project-box {
+	cursor: pointer;
+	transition: transform 0.2s ease;
+}
+.project-box:hover {
+	transform: scale(1.05);
+}
+
+/* View Project Modal */
+.view-modal-content {
+	max-width: 1000px;
+	padding: 30px;
+	position: relative;
+}
+
+.view-close-btn {
+	position: absolute;
+	top: 12px;
+	right: 12px;
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	background: #3fc02b;
+	color: #fff;
+	border: none;
+	font-size: 18px;
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 0;
+	line-height: 1;
+	transition: background 0.2s;
+}
+.view-close-btn i {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	line-height: 1;
+	margin: 0;
+}
+.view-close-btn:hover {
+	background: #2ea31f;
+}
+
+.view-modal-body {
+	display: flex;
+	gap: 36px;
+	align-items: flex-start;
+}
+
+.view-modal-left {
+	flex: 0 0 42%;
+}
+.view-modal-left img {
+	width: 100%;
+	height: 100%;
+	max-height: 500px;
+	object-fit: cover;
+	border-radius: 12px;
+	display: block;
+}
+
+.view-modal-right {
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	gap: 14px;
+}
+
+.view-modal-right h2 {
+	font-size: 2.4rem;
+	font-weight: 900;
+	color: #111;
+	line-height: 1.1;
+	text-transform: uppercase;
+}
+
+.view-modal-right h3 {
+	font-size: 1.1rem;
+	font-weight: 600;
+	color: #888;
+	text-transform: none;
+}
+
+#viewModalDesc p {
+	font-size: 0.95rem;
+	line-height: 1.65;
+	color: #222;
+	margin-bottom: 10px;
+}
+
+.view-modal-cta {
+	font-size: 1rem;
+	font-weight: 700;
+	color: #111;
+	margin-top: 8px;
+}
+
+.view-goto-btn {
+	display: inline-block;
+	padding: 12px 32px;
+	background: #3fc02b;
+	color: #fff;
+	border: 2px solid #3fc02b;
+	border-radius: 50px;
+	font-size: 1rem;
+	cursor: pointer;
+	transition:
+		background 0.2s,
+		color 0.2s;
+	width: fit-content;
+}
+.view-goto-btn:hover {
+	background: #fff;
+	color: #3fc02b;
+}
+
 /* Mobile */
 @media (max-width: 768px) {
 	.modal-body {
@@ -247,5 +366,14 @@ textarea {
 
 	.two-columns {
 		grid-template-columns: 1fr;
+	}
+
+	.view-modal-body {
+		flex-direction: column;
+	}
+
+	.view-modal-left {
+		flex: unset;
+		width: 100%;
 	}
 }

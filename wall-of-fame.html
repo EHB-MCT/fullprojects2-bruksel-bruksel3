@@ -63,7 +63,7 @@
 		<div class="wof-spacer"></div>
 		<section class="wall-of-fame">
 			<div class="project-boxes">
-				<div class="project-box">
+				<div class="project-box" data-index="0">
 					<img
 						src="assets/architect.jpg"
 						alt="Project 1"
@@ -81,7 +81,7 @@
 					</p>
 				</div>
 
-				<div class="project-box">
+				<div class="project-box" data-index="1">
 					<img
 						src="assets/brusilia.jpg"
 						alt="Project 2"
@@ -99,7 +99,7 @@
 					</p>
 				</div>
 
-				<div class="project-box">
+				<div class="project-box" data-index="2">
 					<img src="assets/kerk.jpg" alt="Project 3" class="project-image" />
 					<div class="project-info">
 						<div class="project-avatar"><i class="fa-solid fa-user"></i></div>
@@ -112,8 +112,28 @@
 						Heeft dit beeld gebruikt voor zijn eindjaarproject als inspiratie.
 					</p>
 				</div>
+
 			</div>
 		</section>
+
+		<!-- View Project Modal -->
+		<div id="viewProjectModal" class="modal">
+			<div class="modal-content view-modal-content">
+				<button class="view-close-btn"><i class="fa-solid fa-xmark"></i></button>
+				<div class="view-modal-body">
+					<div class="view-modal-left">
+						<img id="viewModalImg" src="" alt="" />
+					</div>
+					<div class="view-modal-right">
+						<h2 id="viewModalName"></h2>
+						<h3 id="viewModalRole"></h3>
+						<div id="viewModalDesc"></div>
+						<p class="view-modal-cta">Ontdek hoe onze beelden hierin werden gebruikt</p>
+						<button class="view-goto-btn">ga naar</button>
+					</div>
+				</div>
+			</div>
+		</div>
 
 		<!-- Popup Modal -->
 		<div id="projectModal" class="modal">
@@ -196,5 +216,63 @@
 			})();
 		</script>
 		<script src="js/index.js"></script>
+		<script>
+			(function () {
+				const projects = [
+					{
+						img: "assets/architect.jpg",
+						name: "Oscar Slosse",
+						role: "Architectuurstudent",
+						desc: [
+							"Voor zijn eindjaarproject onderzocht Oscar hoe verlaten industriële gebouwen een nieuwe functie kunnen krijgen binnen de stad.",
+							"Als inspiratiebron gebruikte hij een historische foto uit de Brukselbeeldenbank van een voormalige Brusselse fabriekssite uit het begin van de 20e eeuw.",
+							"Het beeld bood waardevolle inzichten in de oorspronkelijke architectuur, materiaalkeuzes en ruimtelijke indeling van het gebouw.",
+							"Op basis daarvan ontwikkelde hij een ontwerpvoorstel waarin het industriële karakter behouden blijft, terwijl de site wordt omgevormd tot een multifunctionele ontmoetingsplek voor buurtbewoners. Door gebruik te maken van beeldmateriaal uit de Brukselbeeldenbank kon Oscar historische elementen vertalen naar een hedendaags architecturaal ontwerp en zo een verbinding creëren tussen het Brusselse erfgoed en de toekomst van de stad.",
+						],
+					},
+					{
+						img: "assets/brusilia.jpg",
+						name: "John Doe",
+						role: "Rol / functie",
+						desc: [
+							"Heeft dit beeld gebruikt voor zijn eindjaarproject als inspiratie.",
+						],
+					},
+					{
+						img: "assets/kerk.jpg",
+						name: "John Doe",
+						role: "Rol / functie",
+						desc: [
+							"Heeft dit beeld gebruikt voor zijn eindjaarproject als inspiratie.",
+						],
+					},
+				];
+
+				const modal = document.getElementById("viewProjectModal");
+				const closeBtn = modal.querySelector(".view-close-btn");
+
+				document.querySelectorAll(".project-box").forEach((box) => {
+					box.addEventListener("click", () => {
+						const idx = parseInt(box.dataset.index, 10);
+						const p = projects[idx];
+						document.getElementById("viewModalImg").src = p.img;
+						document.getElementById("viewModalImg").alt = p.name;
+						document.getElementById("viewModalName").textContent = p.name;
+						document.getElementById("viewModalRole").textContent = p.role;
+						const descEl = document.getElementById("viewModalDesc");
+						descEl.innerHTML = p.desc.map((t) => `<p>${t}</p>`).join("");
+						modal.style.display = "flex";
+					});
+				});
+
+				closeBtn.addEventListener("click", () => (modal.style.display = "none"));
+				modal.addEventListener("click", (e) => {
+					if (e.target === modal) modal.style.display = "none";
+				});
+				document.addEventListener("keydown", (e) => {
+					if (e.key === "Escape") modal.style.display = "none";
+				});
+			})();
+		</script>
 	</body>
 </html>
