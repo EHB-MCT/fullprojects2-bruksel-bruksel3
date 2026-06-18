@@ -124,10 +124,8 @@
           >
         </div>
       </aside>
+      <div class="top-filters"></div>
       <main class="content">
-        <div class="top-filters">
-          
-        </div>
         <div class="gallery">
           <div class="card"></div>
           <div class="card"></div>
@@ -226,12 +224,19 @@
 
     <script src="js/index.js"></script>
     <script>
-      // Mobile filter popup toggle
+      // Filter popup toggle — mobile button + tablet filter icon
       const mobileFilterBtn = document.getElementById('mobileFilterBtn');
       const mobileFilterPopup = document.getElementById('mobileFilterPopup');
       const mobileFilterClose = document.getElementById('mobileFilterClose');
-      mobileFilterBtn.addEventListener('click', () => mobileFilterPopup.classList.add('open'));
-      mobileFilterClose.addEventListener('click', () => mobileFilterPopup.classList.remove('open'));
+      const tabletFilterBtn = document.querySelector('.tablet-filter-bg');
+
+      function openFilterPopup() { mobileFilterPopup.classList.add('open'); }
+      function closeFilterPopup() { mobileFilterPopup.classList.remove('open'); }
+
+      if (mobileFilterBtn) mobileFilterBtn.addEventListener('click', openFilterPopup);
+      if (tabletFilterBtn) tabletFilterBtn.addEventListener('click', openFilterPopup);
+      if (mobileFilterClose) mobileFilterClose.addEventListener('click', closeFilterPopup);
+      mobileFilterPopup.addEventListener('click', (e) => { if (e.target === mobileFilterPopup) closeFilterPopup(); });
 
       // Sync mobile filter checkboxes with real sidebar checkboxes
       document.querySelectorAll('#mobileFilterPopup input[data-filter-id]').forEach(cb => {

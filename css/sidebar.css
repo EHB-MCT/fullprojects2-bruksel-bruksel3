@@ -1,11 +1,19 @@
 .container {
-	display: flex;
-	gap: 32px;
+	display: grid;
+	grid-template-columns: 320px 1fr;
+	grid-template-rows: auto 1fr;
+	grid-template-areas:
+		"sidebar filters"
+		"sidebar content";
+	column-gap: 32px;
 	width: 100%;
 	max-width: 1300px;
 	margin: 0 auto;
 	padding: 0 32px 40px;
 }
+.sidebar    { grid-area: sidebar; }
+.top-filters { grid-area: filters; }
+.content    { grid-area: content; }
 .sidebar {
 	width: 320px;
 	background: rgba(255, 255, 255, 1);
@@ -16,10 +24,10 @@
 .background {
 	position: absolute;
 	width: 100%;
-	height: 300%;
+	height: 9999px;
 	background-color: #fff;
 	z-index: -1;
-	margin-top: 35px;
+	margin-top: 50px;
 }
 
 .search-box {
@@ -345,28 +353,44 @@
 ========================== */
 @media (max-width: 1024px) {
 	.container {
-		flex-direction: column;
-		padding: 0 20px 30px;
+		grid-template-columns: auto 1fr;
+		grid-template-rows: auto auto;
+		grid-template-areas:
+			"sidebar filters"
+			"content content";
+		padding: 20px 20px 30px;
+		column-gap: 12px;
+		row-gap: 16px;
+		align-items: center;
+		margin-top: 30px;
 	}
 
 	.sidebar {
 		width: 100%;
-		padding: 2px;
+		padding: 0;
 		background: none;
 		box-shadow: none;
 	}
 
 	.content {
 		width: 100%;
+		grid-column: 1 / -1;
+	}
+	.top-filters {
+		margin-top: 0;
+		margin-bottom: 0;
+		justify-content: flex-start;
+		overflow-x: auto;
 	}
 
 	.gallery {
-		grid-template-columns: repeat(3, 1fr);
-		gap: 18px;
+		grid-template-columns: repeat(4, 1fr);
+		gap: 16px;
 	}
 
 	.card {
-		min-height: 200px;
+		min-height: 180px;
+		max-height: 220px;
 	}
 
 	.top-filters {
@@ -378,49 +402,73 @@
 		padding: 30px;
 	}
 
-	.tablet-filter-bg {
-		position: relative;
-		top: 50px;
-		background: #3fc02b;
-		padding: 10px;
-		width: 50px;
-		border-radius: 70%;
-		padding: 0px;
+	.background {
+		margin-top: -20px;
 	}
+
+	.sidebar {
+		position: static;
+		background: none;
+		box-shadow: none;
+		border-radius: 0;
+		padding: 0;
+		align-self: center;
+	}
+
 	.search-box {
-		margin-bottom: 0px;
+		display: flex;
+		align-items: center;
+		gap: 12px;
+		margin-bottom: 0;
+		position: relative;
 	}
+
+	.tablet-filter-bg {
+		flex-shrink: 0;
+		width: 48px;
+		height: 48px;
+		background: #3fc02b;
+		border-radius: 50%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		box-shadow: 0 4px 14px rgba(63, 192, 43, 0.35);
+		cursor: pointer;
+	}
+
 	.search-box .tablet-filter {
 		display: block;
-		position: relative;
-		font-size: 30px;
+		font-size: 1.1rem;
 		color: #fff;
-		border-radius: 50%;
-		padding: 10px 15px;
-		top: 1px;
-		right: 5px;
+		padding: 0;
+		top: 0;
+		right: 0;
+		position: static;
 	}
+
 	.panel {
 		display: none;
 	}
+
 	.search-box input {
-		width: 30%;
-		box-shadow: 0 20px 20px rgba(0, 0, 0, 0.12);
-		border: 1px solid rgb(194, 194, 194);
-		position: relative;
-		top: 0px;
-		left: 50px;
+		flex: 1;
+		width: auto;
+		padding: 12px 16px 12px 40px;
+		box-shadow: none;
+		border: 1px solid #e0e0e0;
+		border-radius: 999px;
+		position: static;
+		left: auto;
+		top: auto;
 	}
+
 	.fa-magnifying-glass {
-		left: 68px;
+		left: 72px;
 		top: 50%;
 		transform: translateY(-50%);
-		font-size: 19px;
+		font-size: 16px;
 		z-index: 1;
 	}
-	/*
-			
-	*/
 }
 
 /* ==========================
@@ -433,6 +481,40 @@
 	display: none;
 }
 
+/* Filter popup beschikbaar op tablet én mobiel */
+@media (max-width: 1024px) {
+	.mobile-filter-popup {
+		display: block;
+		position: fixed;
+		inset: 0;
+		z-index: 600;
+		background: rgba(0,0,0,0.45);
+		opacity: 0;
+		pointer-events: none;
+		transition: opacity 0.25s ease;
+	}
+	.mobile-filter-popup.open {
+		opacity: 1;
+		pointer-events: all;
+	}
+	.mobile-filter-inner {
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		background: #fff;
+		border-radius: 24px 24px 0 0;
+		padding: 24px 20px 36px;
+		max-height: 80vh;
+		overflow-y: auto;
+		transform: translateY(100%);
+		transition: transform 0.3s ease;
+	}
+	.mobile-filter-popup.open .mobile-filter-inner {
+		transform: translateY(0);
+	}
+}
+
 @media (max-width: 768px) {
 	/* Hide sidebar entirely — filters live in mobile-filter-popup */
 	.sidebar {
@@ -440,9 +522,14 @@
 	}
 
 	.container {
+		grid-template-columns: 1fr;
+		grid-template-areas:
+			"content";
 		padding: 0 15px 100px;
 		gap: 0;
 	}
+	.sidebar    { display: none; }
+	.top-filters { display: none; }
 
 	.gallery {
 		grid-template-columns: repeat(2, 1fr);

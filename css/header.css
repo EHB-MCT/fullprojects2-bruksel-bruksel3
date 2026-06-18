@@ -46,13 +46,14 @@ header {
 .hero {
 	width: 40%;
 	left: 30%;
-	height: 250px;
 	position: relative;
-	padding-top: 30px;
-	padding-bottom: 30px;
 	color: #fff;
 	background-size: cover;
 	background-position: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	padding: 50px 0;
 }
 .hero-h1 h1 {
 	font-family: "Inter", sans-serif;
