@@ -32,6 +32,7 @@
 	font-family: "Inter", sans-serif;
 	border: none;
 	cursor: pointer;
+	width: 130px;
 }
 
 .hero-button:hover {
